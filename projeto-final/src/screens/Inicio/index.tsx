@@ -1,13 +1,18 @@
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 import { styles } from './styles';
 
 
-const Home = () => {
+const Inicio = ({navigation}: any) => {
+
+    const handlePressLogin = () => {
+        navigation.navigate("Login")
+    }
+
     return (
         <View style={styles.container}>
-            <Text style={styles.texto}>Hello, World!</Text>
+            <Button title='Entrar' onPress={() => handlePressLogin()}/>
         </View>
     );
 };
 
-export default Home;
+export default Inicio;
