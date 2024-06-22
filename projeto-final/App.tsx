@@ -6,8 +6,11 @@ import DetalheProduto from './src/screens/DetalhesProduto';
 
 export default function App() {
   return (
-     <NavigationContainer>
+    <>
+      <NavigationContainer>
        <StackComponent/>
-     </NavigationContainer> 
+     </NavigationContainer>
+    </>
+   
   );
 }

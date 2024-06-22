@@ -12,20 +12,21 @@ export default function detalhesProduto() {
       
       <View style={styles.container2}>
         <Image></Image>
+        <Text>Alo</Text>
       </View>
       
       <View style={styles.container3}>
-        <Text>KIT PC GAMER</Text>
+        <Text style={styles.titulo}>KIT PC GAMER</Text>
       </View>
      
       <View style={styles.container4}>
-        <Text>QUANTIDADE</Text>
-        <Text> VALOR </Text>
+        <Text style={styles.texto} >QUANTIDADE</Text>
+        <Text style={styles.texto} > VALOR </Text>
       </View>
       
       <View style={styles.container5}>
-        <Text>Descrição</Text>
-        <Text>Texto</Text>
+        <Text style={styles.titulo2}>Descrição</Text>
+        <Text style={styles.texto}>Texto</Text>
       </View>
       
       <View style={styles.container6}>
