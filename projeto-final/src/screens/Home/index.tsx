@@ -2,7 +2,7 @@ import { View, Text, Button } from "react-native";
 import { styles } from './styles';
 
 
-const Inicio = ({navigation}: any) => {
+const Home = ({navigation}: any) => {
 
     const handlePressLogin = () => {
         navigation.navigate("Login")
@@ -15,4 +15,4 @@ const Inicio = ({navigation}: any) => {
     );
 };
 
-export default Inicio;
+export default Home;
