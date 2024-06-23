@@ -1,12 +1,12 @@
-import { View, Text, Button, FlatList, Image } from "react-native";
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { View, Text, Button, FlatList, Image, ActivityIndicator } from "react-native";
 import { styles } from './styles';
-import { ProdutoProps } from "../../routes/stack";
 import { getAllProducts } from "../../services/produtosCrud";
 import { useEffect, useState } from "react";
 import { Produto } from "../../types";
+import React from "react";
+import { Logo } from "../../components/Logo";
 
-const Produtos = ({ navigation }: ProdutoProps) => {
+const Produtos = ({ navigation }: any) => {
 
     const [products, setProducts] = useState<Produto[]>([]);
 
@@ -24,13 +24,18 @@ const Produtos = ({ navigation }: ProdutoProps) => {
         }
     }
 
+      const toggleDrawer = () => {
+        navigation.toggleDrawer();
+    }
+
     useEffect(() => {
         getProducts();
     }, [])
 
     return (
         <View style={styles.container} >
-            <Text style={styles.texto}>Hello, World!</Text>
+            <Button title="Toggle Drawer" onPress={toggleDrawer} />
+            <Logo/>
 
             <FlatList
                 data={products}

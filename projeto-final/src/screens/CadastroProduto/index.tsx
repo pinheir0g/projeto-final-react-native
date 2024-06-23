@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, Image, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { View, Text, TextInput, Button, Alert, Image, TouchableWithoutFeedback, Keyboard, ScrollView, TouchableOpacity } from 'react-native';
 import { Produto } from '../../types';
 import { styles } from './styles';
 import { saveProduct } from '../../services/produtosCrud';
 import * as ImagePicker from 'expo-image-picker'
+import React from 'react';
+import { Logo } from '../../components/Logo';
 
 
 const CadastroProduto = () => {
@@ -16,8 +18,6 @@ const CadastroProduto = () => {
         quantidade: '',
         imagem: ''
     })
-    
-    // const [image, setImage] = useState('');
 
     const handleChange = (name: keyof Produto, value: string) => {
         setProduto({
@@ -35,10 +35,7 @@ const CadastroProduto = () => {
             imagem: produto.imagem
         }
         try {
-            console.log("URI IMG ANTES DE SALVAR: " + newProduct.imagem)
             const product = await saveProduct(newProduct);
-            console.log("URI IMG DEPOIS DE SALVAR: " + product.imagem)
-
             setProduto({
                 id: '',
                 nome: '',
@@ -53,10 +50,10 @@ const CadastroProduto = () => {
             console.log(err)
         }
     }
-    
+
 
     const getImagemFromLibrary = async () => {
-        // Ask the user for the permission to access the library
+        // Pede permissão ao usuário para utilizar as imagens do celular
         const permissionResult =
             await ImagePicker.requestMediaLibraryPermissionsAsync();
 
@@ -73,113 +70,56 @@ const CadastroProduto = () => {
         });
 
         if (!image64.canceled) {
-            setProduto({...produto, imagem: image64.assets[0].uri})
-            console.log(typeof(image64.assets[0].uri))
+            setProduto({ ...produto, imagem: image64.assets[0].uri })
+            console.log(typeof (image64.assets[0].uri))
             console.log((image64.assets[0].uri))
-            //   UsuarioService.atualizarFoto(user, image64.assets[0].uri).then((resp) => {
-            //     if (typeof resp == "object") {
-            //       user.avatar_url = resp[0].avatar_url;
-            //       signIn(user);
-            //       setImage(user.avatar_url);
-            //     }
-            //   });
-            //   setImage(image64.assets[0].uri);
-            //   setVisibleModalFoto(false);
         }
     };
 
-    return (
-        <View>
-             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-            <View>
-                <Text>Nome</Text>
-                <TextInput
-                    style={styles.input}
-                    value={produto.nome}
-                    onChangeText={(value) => handleChange('nome', value)}
-                />
-                <Text>Descrição</Text>
-                <TextInput
-                    style={styles.input}
-                    value={produto.descricao}
-                    onChangeText={(value) => handleChange('descricao', value)}
-                />
-                <Text>Preço</Text>
-                <TextInput
-                    style={styles.input}
-                    value={produto.preco}
-                    keyboardType="numeric"
-                    onChangeText={(value) => handleChange('preco', value)}
-                />
-                <Text>Quantidade</Text>
-                <TextInput
-                    style={styles.input}
-                    value={produto.quantidade}
-                    keyboardType="numeric"
-                    onChangeText={(value) => handleChange('quantidade', value)}
-                />
-                {produto.imagem && <Image source={{ uri: produto.imagem }} style={{ width: 200, height: 200 }} />}
 
-                <Button title="Adicionar imagem" onPress={getImagemFromLibrary} />
-                <Button title="Cadastrar Produto" onPress={saveProduto} />
-            </View>
+    return (
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <ScrollView style={styles.scrollView}>
+                <View style={styles.container}>
+                    <Logo />
+                    <View style={styles.form}>
+                        <Text style={styles.texto}>Nome</Text>
+                        <TextInput
+                            style={styles.input}
+                            value={produto.nome}
+                            onChangeText={(value) => handleChange('nome', value)}
+                        />
+                        <Text style={styles.texto}>Descrição</Text>
+                        <TextInput
+                            style={styles.input}
+                            value={produto.descricao}
+                            onChangeText={(value) => handleChange('descricao', value)}
+                        />
+                        <Text style={styles.texto}>Preço</Text>
+                        <TextInput
+                            style={styles.input}
+                            value={produto.preco}
+                            keyboardType="numeric"
+                            onChangeText={(value) => handleChange('preco', value)}
+                        />
+                        <Text style={styles.texto}>Quantidade</Text>
+                        <TextInput
+                            style={styles.input}
+                            value={produto.quantidade}
+                            keyboardType="numeric"
+                            onChangeText={(value) => handleChange('quantidade', value)}
+                        />
+                        {produto.imagem && <Image source={{ uri: produto.imagem }} style={{ width: 200, height: 200 }} />}
+                        <TouchableOpacity onPress={getImagemFromLibrary}>
+                            <Text style={styles.texto}>Adicionar imagem</Text>
+                        </TouchableOpacity>
+
+                        <Button title="Cadastrar Produto" onPress={saveProduto} />
+                    </View>
+                </View>
+            </ScrollView>
         </TouchableWithoutFeedback>
-        </View>
     );
 };
 
 export default CadastroProduto;
-
-// const anexarImagem = async () => {
-//     // Ask the user for the permission to access the camera
-//     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
-
-//     if (permissionResult.granted === false) {
-//       alert("Acesso negado!");
-//       return;
-//     }
-
-//     const image64 = await ImagePicker.launchCameraAsync();
-
-//     if (!image64.canceled) {
-//       UsuarioService.atualizarFoto(user, image64.assets[0].uri).then((resp) => {
-//         if (typeof resp == "object") {
-//           user.avatar_url = resp[0].avatar_url;
-//           signIn(user);
-//           setImage(user.avatar_url);
-//         }
-//       });
-//       setImage(image64.assets[0].uri);
-//       setVisibleModalFoto(false);
-//     }
-//   };
-
-//   const getImagemFromLibrary = async () => {
-//     // Ask the user for the permission to access the library
-//     const permissionResult =
-//       await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-//     if (permissionResult.granted === false) {
-//       alert("Acesso negado!");
-//       return;
-//     }
-
-//     const image64 = await ImagePicker.launchImageLibraryAsync({
-//       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-//       aspect: [4, 4],
-//       allowsEditing: true,
-//       quality: 1,
-//     });
-
-//     if (!image64.canceled) {
-//       UsuarioService.atualizarFoto(user, image64.assets[0].uri).then((resp) => {
-//         if (typeof resp == "object") {
-//           user.avatar_url = resp[0].avatar_url;
-//           signIn(user);
-//           setImage(user.avatar_url);
-//         }
-//       });
-//       setImage(image64.assets[0].uri);
-//       setVisibleModalFoto(false);
-//     }
-//   };
