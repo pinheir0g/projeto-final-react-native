@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
     texto: {
         color: 'white',
         fontSize: 25
-
     },
     containerFoto: {
         marginTop: 10,

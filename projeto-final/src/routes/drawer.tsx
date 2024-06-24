@@ -14,6 +14,6 @@ const DrawerComponent = () => {
             <Screen name='Inicio' component={ProdutosStack} options={{title: "Inicio", headerShown: false}} />
         </Navigator>
     );
-}
+};
 
 export default DrawerComponent
