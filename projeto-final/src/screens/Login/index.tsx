@@ -8,7 +8,8 @@ import {
 } from "react-native";
 import { styles } from "./styles";
 import { useState } from "react";
-import Icon from "react-native-vector-icons/MaterialIcons";
+// import Icon from "react-native-vector-icons/MaterialIcons";
+import React from "react";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -50,11 +51,11 @@ const Login = () => {
           onPress={togglePasswordVisibility}
           style={styles.iconButton}
         >
-          <Icon
+          {/* <Icon
             name={passwordVisible ? "visibility-off" : "visibility"}
             size={24}
             color="gray"
-          />
+          /> */}
         </TouchableOpacity>
       </View>
       <View style={styles.password}>
