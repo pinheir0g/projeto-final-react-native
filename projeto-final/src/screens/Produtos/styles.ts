@@ -2,8 +2,10 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
+        marginTop: '10%',
         flex: 10,
-        backgroundColor: '#000000',
+        
+        backgroundColor: '#0F0E0E',
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -25,6 +27,7 @@ export const styles = StyleSheet.create({
     logoContainer: {
         flex: 1,
         alignItems: 'center',
+        marginLeft:-25,
     },
     categoria: {
         color: 'white',
@@ -46,8 +49,13 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-evenly',
         top: 10,
-        width: '100%',
+        width: '95%',
 
+    },
+    imagemProduto:{
+        width: 100, 
+        height: 100, 
+        borderRadius: 15 
     },
     product: {
         flex: 1,

@@ -17,6 +17,10 @@ const Produtos = ({ navigation }: any) => {
         navigation.navigate("CadastroProduto")
     }
 
+    const handleDetalhesProduto = () => {
+        navigation.navigate("DetalhesProduto")
+    }
+
     const getProducts = async () => {
         try {
             const products = await getAllProducts()
@@ -51,9 +55,12 @@ const Produtos = ({ navigation }: any) => {
                     data={products}
                     keyExtractor={item => item.id}
                     renderItem={({ item }) =>
-                        <View style={styles.product}>
+                        <TouchableOpacity 
+                        style={styles.product}
+                        onPress={handleDetalhesProduto}
+                        >
                             <View >
-                                <Image source={{ uri: item.imagem }} style={{ width: 100, height: 100, borderRadius: 10 }} />
+                                <Image source={{ uri: item.imagem }} style={styles.imagemProduto} />
                             </View>
                             <View style={styles.productInfo}>
                                 <Text style={styles.title}>{item.nome}</Text>
@@ -64,7 +71,7 @@ const Produtos = ({ navigation }: any) => {
                                 <Ionicons name="trash-outline" size={28} color="black" />
                                 <FontAwesome6 name="edit" size={27} color="black" />
                             </View>
-                        </View>} />
+                        </TouchableOpacity>} />
             </View>
             <Button title="Novo Produto" onPress={handleNovoProduto} />
         </View>
