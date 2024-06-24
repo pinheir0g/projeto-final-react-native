@@ -1,16 +1,71 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    container:{
-        flex: 1,
+    container: {
+        flex: 10,
         backgroundColor: '#000000',
         justifyContent: 'center',
         alignItems: 'center',
-        
     },
-    texto: {
+    header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        height: 70,
+        paddingHorizontal: 10,
+    },
+    menuButton: {
+        justifyContent: 'flex-start',
+        left: 5,
+        top: 11,
+        backgroundColor: '#FF6E00',
+        padding: 5,
+        borderRadius: 10
+    },
+    logoContainer: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    categoria: {
         color: 'white',
-        textAlign: 'center',
-        fontSize: 20
+        fontSize: 24,
+        margin: 5
+    },
+    title: {
+        color: 'black',
+        fontSize: 24,
+        margin: 5
+    },
+    quantidade: {
+        color: 'black',
+        fontSize: 12,
+        margin: 5
+    },
+    productsContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        top: 10,
+        width: '100%',
+
+    },
+    product: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        padding: 15,
+        backgroundColor: '#D9D9D9',
+        flexDirection: 'row',
+        borderRadius: 20,
+        gap: 10,
+        marginBottom: "5%"
+
+    },
+    productInfo: {
+        flex: 1,
+    },
+    btn: {
+        flex: 0.23,
+        justifyContent: 'space-between'
     },
 });

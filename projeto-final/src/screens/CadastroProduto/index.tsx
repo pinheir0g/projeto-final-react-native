@@ -6,6 +6,7 @@ import { saveProduct } from '../../services/produtosCrud';
 import * as ImagePicker from 'expo-image-picker'
 import React from 'react';
 import { Logo } from '../../components/Logo';
+import MaskInput, { createNumberMask } from 'react-native-mask-input';
 
 
 const CadastroProduto = () => {
@@ -17,7 +18,14 @@ const CadastroProduto = () => {
         preco: '',
         quantidade: '',
         imagem: ''
-    })
+    });
+
+    const realMask = createNumberMask({
+        prefix: ['R', '$', ': '],
+        delimiter: '.',
+        separator: ',',
+        precision: 2,
+    });
 
     const handleChange = (name: keyof Produto, value: string) => {
         setProduto({
@@ -96,11 +104,14 @@ const CadastroProduto = () => {
                             onChangeText={(value) => handleChange('descricao', value)}
                         />
                         <Text style={styles.texto}>Preço</Text>
-                        <TextInput
-                            style={styles.input}
+                        <MaskInput
                             value={produto.preco}
+                            style={styles.input}
                             keyboardType="numeric"
-                            onChangeText={(value) => handleChange('preco', value)}
+                            mask={realMask}
+                            onChangeText={(masked) => {
+                                handleChange('preco', masked)
+                            }}
                         />
                         <Text style={styles.texto}>Quantidade</Text>
                         <TextInput
