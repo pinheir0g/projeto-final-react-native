@@ -5,7 +5,7 @@ export const getAllProducts = async () => {
     return data
 }
 
-export const saveProduct = async (newProduct: {}) => {
+export const postProduct = async (newProduct: {}) => {
     const { data } = await api.post('/produtos', newProduct);
     return data;
 }

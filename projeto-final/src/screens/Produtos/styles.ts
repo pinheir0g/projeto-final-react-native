@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
     container: {
         marginTop: '10%',
         flex: 10,
-        
         backgroundColor: '#0F0E0E',
         justifyContent: 'center',
         alignItems: 'center',
