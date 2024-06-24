@@ -1,26 +1,41 @@
+import React from "react";
 import { NativeStackNavigationProp, NativeStackScreenProps, createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../screens/Inicio";
+import Home from "../screens/Home";
 import Login from "../screens/Login";
+import Produtos from "../screens/Produtos";
+import CadastroProduto from "../screens/CadastroProduto";
+import DetalhesProduto from "../screens/DetalhesProduto";
 
 type StackNavigation = {
-    Inicio: undefined;
+    Home: undefined;
     Login: undefined;
+    Produtos: undefined;
+    CadastroProduto: undefined;
+    DetalhesProduto: undefined;
 }
 
 export type StackTypes = NativeStackNavigationProp<StackNavigation>
-export type HomeProps = NativeStackScreenProps<StackNavigation, "Inicio">
-export type LoginProps = NativeStackScreenProps<StackNavigation, 'Login'>
+export type ProdutoProps = NativeStackScreenProps<StackNavigation, 'Produtos'>
+export type CadastroProdutoProps = NativeStackScreenProps<StackNavigation, 'CadastroProduto'>
+export type DetalhesProdutoProps = NativeStackScreenProps<StackNavigation, 'DetalhesProduto'>
 
+const { Navigator, Screen } = createNativeStackNavigator<StackNavigation>()
 
-const {Navigator, Screen} = createNativeStackNavigator<StackNavigation>()
-
-const StackComponent = () => {
-    return(
+export const ProdutosStack = () => {
+    return (
         <Navigator>
-            <Screen name='Inicio' component={Home} options={{title: "Inicio Page"}}/>
-            <Screen name='Login' component={Login} options={{title: "Login Page"}}/>
+            <Screen name='Produtos' component={Produtos} options={{ title: 'Produtos', headerShown: false,}} />
+            <Screen name='CadastroProduto' component={CadastroProduto} options={{ title: 'Cadastro Produto', }} />
+            <Screen name='DetalhesProduto' component={DetalhesProduto} options={{ title: 'Detalhes Produto', }} />
         </Navigator>
     );
 };
 
-export default StackComponent;
+export const AuthStackNavigation = () => {
+    return(
+    <Navigator>
+        <Screen name="Home" component={Home} />
+        <Screen name="Login" component={Login} />
+    </Navigator>
+    );
+;}
