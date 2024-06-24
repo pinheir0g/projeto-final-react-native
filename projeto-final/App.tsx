@@ -1,14 +1,17 @@
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
 import Routes from './src/routes';
+import React = require('react');
+import { CadastroUsuario } from './src/screens/CadastroUsuario';
+
 
 export default function App() {
 
   return (
     <>
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Routes/>
-     </NavigationContainer>
+     </NavigationContainer> */}
+     <CadastroUsuario/>
     </>
    
   );
