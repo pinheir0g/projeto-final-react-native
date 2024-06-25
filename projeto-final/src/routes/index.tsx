@@ -1,10 +1,16 @@
+import { UserContext } from "../contexts/UserContext";
 import DrawerComponent from "./drawer";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthStackNavigation } from "./stack";
 
 
 const Routes = () => {
+
+    const { signed } = useContext(UserContext);
     return (
-        <DrawerComponent />
+        <>
+            {signed ? <DrawerComponent /> : <AuthStackNavigation />}
+        </>
     );
 };
 

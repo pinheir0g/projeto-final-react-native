@@ -15,7 +15,6 @@ import { Produto } from "../../types";
 import { styles } from "./styles";
 import { postProduct } from "../../services/produtosCrud";
 import * as ImagePicker from "expo-image-picker";
-import React from "react";
 import { Logo } from "../../components/Logo";
 import MaskInput, { createNumberMask } from "react-native-mask-input";
 
