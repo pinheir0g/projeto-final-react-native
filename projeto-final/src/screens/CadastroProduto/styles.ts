@@ -28,8 +28,11 @@ export const styles = StyleSheet.create({
     },
     containerButton:{
         marginTop:20,
+        width:380,
+        height:80,
         justifyContent:'center',
         alignItems:'center',
+        marginLeft:35,
     },
     textoImg: {
         color: 'black',
@@ -44,16 +47,15 @@ export const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: 'white',
     },
-    button: {
-        width:'60%',
-        height:50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#FF7B17',
-        borderRadius: 10,
-    },
+
     form: {
         flex: 0.9,
         width: '90%'
+    },
+
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10,
     },
 });

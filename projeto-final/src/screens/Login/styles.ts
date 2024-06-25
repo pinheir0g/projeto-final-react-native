@@ -70,6 +70,11 @@ export const styles = StyleSheet.create({
         color: "white",
         fontSize: 20,
         fontWeight: "bold"
-    }
+    },
 
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10,
+      },
 })

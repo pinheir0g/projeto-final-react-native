@@ -3,21 +3,24 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#000000',
+        backgroundColor: '#0F0E0E',
         justifyContent: 'center',
         alignItems: 'center',
     },
     View: {
         flex: 1,
-        backgroundColor: '#000000',
+        backgroundColor: '#0F0E0E',
     },
     texto: {
         color: 'white',
-        fontSize: 18
+        fontSize: 25,
+        fontWeight:'bold',
+        marginBottom:5,
     },
 
     input: {
-        height: 33,
+        height: 40,
+        paddingLeft:15,
         borderColor: 'gray',
         borderWidth: 1,
         marginBottom: 15,
@@ -31,12 +34,21 @@ export const styles = StyleSheet.create({
     },
 
     logo: {
-        height: "23%",
-        width: '63%',
-        marginTop: "3%"
+        alignItems:'flex-start',
+        justifyContent:'flex-start',
+        height: 200 ,
+        width: 300,
+        marginTop: "3%",
+        position:'static',
     },
+
     posicaoBotao: {
         bottom: "5%",
-        backgroundColor: "white"
-    }
+    },
+
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10,
+      },
 });

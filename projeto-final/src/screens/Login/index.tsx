@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 import { styles } from "./styles";
 import { useContext, useState } from "react";
@@ -19,6 +20,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -27,16 +29,25 @@ const Login = () => {
   const {login} = useContext(UserContext);
 
   const logar = async () => {
+    setLoading(true)
     try{
       await login(email, password)
 
     }catch(err){
       console.log(err)
     }
-  }
+    setLoading(false);
+  };
+
+
+    if (loading) {
+      return <View style={[styles.container, styles.horizontal]}>
+                <ActivityIndicator size="large" color="#FF7B17" />
+              </View>
+    }
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} >
       <View style={styles.container}>
       {/* Alinhar a logo */}
         <Image
@@ -71,7 +82,7 @@ const Login = () => {
           />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.button} onPress={logar}>
+        <TouchableOpacity style={styles.button} onPress={logar} disabled={loading}>
           <Text style={styles.text}>Entrar</Text>
         </TouchableOpacity>
       </View>
