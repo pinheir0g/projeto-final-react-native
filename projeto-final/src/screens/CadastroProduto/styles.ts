@@ -52,4 +52,10 @@ export const styles = StyleSheet.create({
         flex: 0.9,
         width: '90%'
     },
+
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10,
+    },
 });

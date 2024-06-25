@@ -44,5 +44,11 @@ export const styles = StyleSheet.create({
 
     posicaoBotao: {
         bottom: "5%",
-    }
+    },
+
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10,
+      },
 });
