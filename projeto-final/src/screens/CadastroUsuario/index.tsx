@@ -7,6 +7,7 @@ import {
   Keyboard,
   Alert,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import { styles } from "./styles";
@@ -16,6 +17,7 @@ import { ButtonPadrão } from "../../components/Button";
 
 export function CadastroUsuario() {
   const [confirmaSenha, setConfirmaSenha] = useState("");
+  const [loading, setLoading] = useState(false);
   const [usuario, setUsuario] = useState<Usuario>({
     id: "",
     nome: "",
@@ -36,6 +38,7 @@ export function CadastroUsuario() {
     };
     Alert.alert("Sucesso", "Usuario Criado.");
     //Add validação dos inputs
+    setLoading(true)
     try {
       const user = await postUser(newUser);
       //Colocar msg personalizada de cadastro com sucesso ou erro
@@ -43,12 +46,19 @@ export function CadastroUsuario() {
       Alert.alert("Erro", "Não foi possivel.");
       console.log(err);
     }
+    setLoading(false);
   };
 
   const limparInputs = () => {};
 
+  if (loading) {
+    return <View style={[styles.container, styles.horizontal]}>
+              <ActivityIndicator size="large" color="#FF7B17" />
+            </View>
+  }
+
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} disabled={loading}>
       <View style={styles.container}>
         <Image
           style={styles.logo}

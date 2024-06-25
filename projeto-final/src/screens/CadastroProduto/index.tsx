@@ -80,6 +80,12 @@ const CadastroProduto = () => {
     setLoading(false);
   };
 
+      if (loading) {
+        return <View style={[styles.container, styles.horizontal]}>
+                  <ActivityIndicator size="large" color="#FF7B17" />
+                </View>
+      }
+
   const getImagemFromLibrary = async () => {
     // Pede permissão ao usuário para utilizar as imagens do celular
     const permissionResult =
@@ -102,10 +108,11 @@ const CadastroProduto = () => {
       console.log(typeof image64.assets[0].uri);
       console.log(image64.assets[0].uri);
     }
+
   };
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} disabled={loading}>
       <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
           <Logo />
