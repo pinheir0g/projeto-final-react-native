@@ -26,11 +26,6 @@ export const styles = StyleSheet.create({
         fontWeight: "condensedBold",
     },
 
-    password: {
-        width: '70%',
-        alignItems: 'flex-end',
-    },
-
     passwordContainer: {
         flexDirection: 'row',
         alignItems: 'center',

@@ -5,6 +5,7 @@ import Login from "../screens/Login";
 import Produtos from "../screens/Produtos";
 import CadastroProduto from "../screens/CadastroProduto";
 import DetalhesProduto from "../screens/DetalhesProduto";
+import { CadastroUsuario } from "../screens/CadastroUsuario";
 
 type StackNavigation = {
     Home: undefined;
@@ -12,6 +13,7 @@ type StackNavigation = {
     Produtos: undefined;
     CadastroProduto: undefined;
     DetalhesProduto: undefined;
+    CadastroUsuario: undefined;
 }
 
 export type StackTypes = NativeStackNavigationProp<StackNavigation>
@@ -36,6 +38,7 @@ export const AuthStackNavigation = () => {
     <Navigator>
         <Screen name="Home" component={Home} />
         <Screen name="Login" component={Login} />
+        <Screen name="CadastroUsuario" component={CadastroUsuario}/>
     </Navigator>
     );
 ;}

@@ -8,15 +8,16 @@ const Inicio = ({ navigation }: any) => {
   };
 
   const handlePressSignup = () => {
-    navigation.navigate("Signup");
+    navigation.navigate("CadastroUsuario");
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.status} />
+      {/* Alinhar a logo */}
       <Image
         style={styles.header}
-        source={require("../../image/image.png")}
+        source={require("../../../assets/LOGO.png")}
         resizeMode="contain"
       />
       <TouchableOpacity style={styles.button} onPress={handlePressLogin}>

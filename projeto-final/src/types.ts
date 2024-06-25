@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export type Produto = {
     id: string;
     nome: string;
@@ -5,6 +7,10 @@ export type Produto = {
     preco: string;
     quantidade: string;
     imagem: string;
+}
+
+export type PropsChildren = {
+    children: ReactNode;
 }
 
 export type Usuario = {
