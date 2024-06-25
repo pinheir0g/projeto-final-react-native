@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
 
     container1: {
         flex: 0.8,
-
+        alignItems:'center',
+        justifyContent:'center',
     },
 
     container2: {
@@ -67,6 +68,8 @@ export const styles = StyleSheet.create({
         marginTop: '3%',
     },
     logo: {
+        width:80,
+        height:50,
 
     },
     button: {

@@ -2,16 +2,16 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity} from "react-native";
 import { styles } from "./styles";
 
-
 export default function DetalhesProduto() {
   
-  
-  
+
+
   return (
     <View style={styles.container}>
-      
       <View style={styles.container1}>
-        <Image></Image>
+        <Image 
+        style={styles.logo}
+        source={require('../../../assets/LOGO.png')}></Image>
       </View>
       
       <View style={styles.container2}>
