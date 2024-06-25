@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
         justifyContent:'space-between',
         marginRight:10,
     },
+    
     categoria: {
         color: 'white',
         fontSize: 24,
