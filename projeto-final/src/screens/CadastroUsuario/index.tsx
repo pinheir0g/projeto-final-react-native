@@ -6,7 +6,6 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
-  TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
 import { styles } from "./styles";
@@ -15,7 +14,6 @@ import { postUser } from "../../services/usuariosCrud";
 import { ButtonPadrão } from "../../components/Button";
 
 export function CadastroUsuario() {
-  const [confirmaSenha, setConfirmaSenha] = useState("");
   const [usuario, setUsuario] = useState<Usuario>({
     id: "",
     nome: "",
@@ -34,18 +32,23 @@ export function CadastroUsuario() {
       email: usuario.email,
       senha: usuario.senha,
     };
-    Alert.alert("Sucesso", "Usuario Criado.");
+
     //Add validação dos inputs
     try {
       const user = await postUser(newUser);
+      setUsuario({
+        id: "",
+        nome: "",
+        email: "",
+        senha: "",
+      });
+      Alert.alert("Sucesso", "Usuario Criado.");
       //Colocar msg personalizada de cadastro com sucesso ou erro
     } catch (err) {
       Alert.alert("Erro", "Não foi possivel.");
       console.log(err);
     }
   };
-
-  const limparInputs = () => {};
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -83,7 +86,6 @@ export function CadastroUsuario() {
             title={"Cadastrar Usuario"}
             onPress={() => {
               saveUsuario();
-              limparInputs;
             }}
           />
         </View>
