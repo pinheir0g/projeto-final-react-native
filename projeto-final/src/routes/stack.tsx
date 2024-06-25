@@ -13,7 +13,7 @@ type StackNavigation = {
     Login: undefined;
     Produtos: undefined;
     CadastroProduto: {produto: Produto};
-    DetalhesProduto: undefined;
+    DetalhesProduto: {produto: Produto};
     CadastroUsuario: undefined;
 }
 

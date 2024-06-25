@@ -17,6 +17,9 @@ export const styles = StyleSheet.create({
         flex: 4,
         backgroundColor: '#fff',
         width: '100%',
+        alignContent:'center',
+        justifyContent:'center',
+        alignItems:'center',
     },
 
     container3: {
@@ -51,6 +54,11 @@ export const styles = StyleSheet.create({
         width: '90%',
         marginLeft: '5%',
         marginBottom: '3%',
+    },
+    imagemPrincipal:{
+        flex:1,
+        height:'50%',
+        width:'70%',
     },
 
     titulo: {

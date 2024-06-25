@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 import { Produto } from "../../types";
 import React from "react";
 import { Logo } from "../../components/Logo";
@@ -25,8 +25,8 @@ const Produtos = ({ navigation }: any) => {
     navigation.navigate("CadastroProduto");
   };
 
-  const handleDetalhesProduto = () => {
-    navigation.navigate("DetalhesProduto");
+  const handleDetalhesProduto = (item:Produto) => {
+    navigation.navigate("DetalhesProduto",{produto:item});
   };
 
   const handleEditProduct = async (product: Produto) => {
@@ -70,7 +70,7 @@ const Produtos = ({ navigation }: any) => {
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.product}
-              onPress={handleDetalhesProduto}
+              onPress={() => handleDetalhesProduto(item)}
             >
               <View>
                 <Image
