@@ -3,12 +3,10 @@ import {
   Text,
   FlatList,
   Image,
-  ActivityIndicator,
   TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
-import { getAllProducts } from "../../services/produtosCrud";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Produto } from "../../types";
 import React from "react";
 import { Logo } from "../../components/Logo";
@@ -16,9 +14,12 @@ import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome6 } from "@expo/vector-icons";
 import Plus from "@expo/vector-icons/Fontisto";
+import { ProductContext } from "../../contexts/produtoContext";
 
 const Produtos = ({ navigation }: any) => {
-  const [products, setProducts] = useState<Produto[]>([]);
+
+  const { products, getProducts, deleteProduct } = useContext(ProductContext);
+
 
   const handleNovoProduto = () => {
     navigation.navigate("CadastroProduto");
@@ -28,14 +29,10 @@ const Produtos = ({ navigation }: any) => {
     navigation.navigate("DetalhesProduto");
   };
 
-  const getProducts = async () => {
-    try {
-      const products = await getAllProducts();
-      setProducts(products);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const handleEditProduct = async (product: Produto) => {
+    navigation.navigate('CadastroProduto', { produto: product });
+
+  }
 
   const toggleDrawer = () => {
     navigation.toggleDrawer();
@@ -43,6 +40,7 @@ const Produtos = ({ navigation }: any) => {
 
   useEffect(() => {
     getProducts();
+
   }, []);
 
   return (
@@ -88,8 +86,13 @@ const Produtos = ({ navigation }: any) => {
                 <Text style={styles.title}>{item.preco}</Text>
               </View>
               <View style={styles.btn}>
-                <Ionicons name="trash-outline" size={28} color="black" />
-                <FontAwesome6 name="edit" size={27} color="black" />
+                <TouchableOpacity onPress={() => handleEditProduct(item)}>
+                  <FontAwesome6 name="edit" size={27} color="black" />
+
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => deleteProduct(item.id)}>
+                  <Ionicons name="trash-outline" size={28} color="black" />
+                </TouchableOpacity>
               </View>
             </TouchableOpacity>
           )}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -13,22 +13,28 @@ import {
 } from "react-native";
 import { Produto } from "../../types";
 import { styles } from "./styles";
-import { postProduct } from "../../services/produtosCrud";
+import { updateProduct } from "../../services/produtosCrud";
 import * as ImagePicker from "expo-image-picker";
 import React from "react";
 import { Logo } from "../../components/Logo";
 import MaskInput, { createNumberMask } from "react-native-mask-input";
 import { ButtonPadrão } from "../../components/Button";
+import { CadastroProdutoProps } from "../../routes/stack";
+import { ProductContext } from "../../contexts/produtoContext";
 
-const CadastroProduto = () => {
+const CadastroProduto = ({ navigation, route }: CadastroProdutoProps) => {
+
+  const { saveProduct, editProduct } = useContext(ProductContext);
+
   const [produto, setProduto] = useState<Produto>({
-    id: "",
-    nome: "",
-    descricao: "",
-    preco: "",
-    quantidade: "",
-    imagem: "",
+    id: '',
+    nome: '',
+    descricao: '',
+    preco: '',
+    quantidade: '',
+    imagem: ''
   });
+  const props = route.params;
   const [loading, setLoading] = useState(false);
 
   const realMask = createNumberMask({
@@ -47,44 +53,43 @@ const CadastroProduto = () => {
 
   const saveProduto = async () => {
     const newProduct = {
-      nome: produto.nome,
-      descricao: produto.descricao,
-      preco: produto.preco,
-      quantidade: produto.quantidade,
-      imagem: produto.imagem,
-    };
-    if (
-      newProduct.nome === "" ||
-      newProduct.descricao === "" ||
-      newProduct.preco === "" ||
-      newProduct.quantidade === ""
-    ) {
-      Alert.alert("Alerta", "Nenhum campo pode estar vazio!");
+      ...produto,
+      id: produto.id
+    }
+    if (newProduct.nome === '' || newProduct.descricao === '' || newProduct.preco === '' || newProduct.quantidade === '' || newProduct.imagem === '') {
+      Alert.alert('Alerta', "Nenhum campo pode estar vazio!");
       return;
     }
     setLoading(true);
     try {
-      const product = await postProduct(newProduct);
+      if (produto.id) {
+        editProduct(newProduct);
+        Alert.alert('Sucesso', 'Produto editado com sucesso');
+        navigation.navigate('Produtos')
+      } else {
+        saveProduct(newProduct);
+        Alert.alert('Sucesso', 'Produto cadastrado com sucesso');
+      }
       setProduto({
-        id: "",
-        nome: "",
-        descricao: "",
-        preco: "",
-        quantidade: "",
-        imagem: "",
+        id: '',
+        nome: '',
+        descricao: '',
+        preco: '',
+        quantidade: '',
+        imagem: ''
+
       });
-      Alert.alert("Sucesso", "Produto cadastrado com sucesso");
     } catch (err) {
-      console.log(err);
-    }
-    setLoading(false);
+      console.log(err)
+    };
+    setLoading(false)
   };
 
-      if (loading) {
-        return <View style={[styles.container, styles.horizontal]}>
-                  <ActivityIndicator size="large" color="#FF7B17" />
-                </View>
-      }
+  if (loading) {
+    return <View style={[styles.container, styles.horizontal]}>
+      <ActivityIndicator size="large" color="#FF7B17" />
+    </View>
+  }
 
   const getImagemFromLibrary = async () => {
     // Pede permissão ao usuário para utilizar as imagens do celular
@@ -105,11 +110,14 @@ const CadastroProduto = () => {
 
     if (!image64.canceled) {
       setProduto({ ...produto, imagem: image64.assets[0].uri });
-      console.log(typeof image64.assets[0].uri);
-      console.log(image64.assets[0].uri);
     }
-
   };
+
+  useEffect(() => {
+    if (props?.produto) {
+      setProduto(props.produto)
+    }
+  }, [props])
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} disabled={loading}>
@@ -164,7 +172,10 @@ const CadastroProduto = () => {
           </View>
         </View>
         <View style={styles.containerButton}>
-          <ButtonPadrão title={"Cadastrar Produto"} onPress={saveProduto} />
+          {produto.id ?
+            <ButtonPadrão title={"Salvar"} onPress={saveProduto} /> : (
+              <ButtonPadrão title={"Cadastrar Produto"} onPress={saveProduto} />
+            )}
         </View>
       </ScrollView>
     </TouchableWithoutFeedback>

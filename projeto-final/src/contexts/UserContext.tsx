@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { PropsChildren, Usuario } from "../types";
-import { getUsers } from "../services/usuariosCrud";
+import { getUsers, postUser } from "../services/usuariosCrud";
 import { Alert } from "react-native";
 
 
@@ -9,6 +9,7 @@ type UserCtxData = {
     login(email: string, senha: string): Promise<void>,
     logout(): void
     signed: boolean,
+    saveUsuario(usuario: Usuario): Promise<void>,
 }
 
 export const UserContext = createContext<UserCtxData>({} as UserCtxData);
@@ -35,12 +36,20 @@ const UserProvider = ({ children }: PropsChildren) => {
         } catch (err) {
             console.log(err)
         }
-
     }
 
     const logout = () => {
         setUser(null);
     }
+
+    const saveUsuario = async (usuario: Usuario) => {
+        try{
+            const newUsuario = await postUser(usuario);
+            //Colocar msg personalizada de cadastro com sucesso ou erro
+        } catch (err) {
+            console.log(err)
+        };
+    };
 
 
     return (
@@ -49,6 +58,7 @@ const UserProvider = ({ children }: PropsChildren) => {
                 user,
                 login,
                 logout,
+                saveUsuario,
                 signed: !!user
             }}
         >

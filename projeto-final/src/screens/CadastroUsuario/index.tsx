@@ -10,13 +10,16 @@ import {
   ActivityIndicator,
 
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { styles } from "./styles";
 import { Usuario } from "../../types";
-import { postUser } from "../../services/usuariosCrud";
+import { UserContext } from "../../contexts/UserContext";
+import { CadastroProdutoProps } from "../../routes/stack";
 import { ButtonPadrão } from "../../components/Button";
 
-export function CadastroUsuario() {
+export function CadastroUsuario({ navigation }: CadastroProdutoProps) {
+
+  const { saveUsuario } = useContext(UserContext);
 
   const [confirmaSenha, setConfirmaSenha] = useState("");
   const [loading, setLoading] = useState(false);
@@ -33,40 +36,36 @@ export function CadastroUsuario() {
       [name]: value,
     });
   };
-  const saveUsuario = async () => {
+  const saveUser = async () => {
     const newUser = {
-      nome: usuario.nome,
-      email: usuario.email,
-      senha: usuario.senha,
+      ...usuario
     };
-
-    //Add validação dos inputs
     setLoading(true)
     try {
-      const user = await postUser(newUser);
+      const savedUser = await saveUsuario(newUser);
+      console.log(savedUser);
+      navigation.navigate('Login');
+      Alert.alert('Sucesso', 'Usuario cadastrado com sucesso.')
       setUsuario({
         id: "",
         nome: "",
         email: "",
-        senha: "",
+        senha: ""
       });
-      Alert.alert("Sucesso", "Usuario Criado.");
-      //Colocar msg personalizada de cadastro com sucesso ou erro
+
     } catch (err) {
       Alert.alert("Erro", "Não foi possivel.");
-      console.log(err);
-    }
+      console.log(err)
+    };
     setLoading(false);
   };
 
-  const limparInputs = () => {};
-
   if (loading) {
     return <View style={[styles.container, styles.horizontal]}>
-              <ActivityIndicator size="large" color="#FF7B17" />
-            </View>
+      <ActivityIndicator size="large" color="#FF7B17" />
+    </View>
   }
-    
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} disabled={loading}>
       <View style={styles.container}>
@@ -102,7 +101,7 @@ export function CadastroUsuario() {
           <ButtonPadrão
             title={"Cadastrar Usuario"}
             onPress={() => {
-              saveUsuario();
+              saveUser();
             }}
           />
         </View>
