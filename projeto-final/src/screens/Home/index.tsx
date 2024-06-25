@@ -1,6 +1,7 @@
-import { View, TouchableOpacity, Text, Image } from "react-native";
+import { View, Image } from "react-native";
 import { styles } from "./styles";
 import React from "react";
+import { ButtonPadrão } from "../../components/Button";
 
 const Inicio = ({ navigation }: any) => {
   const handlePressLogin = () => {
@@ -13,22 +14,19 @@ const Inicio = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.status} />
+      <View/>
       {/* Alinhar a logo */}
       <Image
         style={styles.header}
         source={require("../../../assets/LOGO.png")}
         resizeMode="contain"
       />
-      <TouchableOpacity style={styles.button} onPress={handlePressLogin}>
-        <Text style={styles.text}>Entrar</Text>
-      </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buttonSecond}
-          onPress={handlePressSignup}
-        >
-          <Text style={styles.text}>Cadastrar</Text>
-        </TouchableOpacity>
+      <View style={styles.container2}>
+        <ButtonPadrão title={"      Entrar      "} onPress={handlePressLogin} />
+      </View>
+      <View style={styles.container3}>
+        <ButtonPadrão title={"   Cadastrar   "} onPress={handlePressSignup} />
+      </View>
     </View>
   );
 };

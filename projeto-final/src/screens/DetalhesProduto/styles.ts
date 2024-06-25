@@ -9,8 +9,8 @@ export const styles = StyleSheet.create({
 
     container1: {
         flex: 0.8,
-        alignItems:'center',
-        justifyContent:'center',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 
     container2: {
@@ -46,10 +46,11 @@ export const styles = StyleSheet.create({
     container6: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '70%',
-        marginLeft: '15%',
+        justifyContent: 'space-around',
         alignItems: 'center',
+        width: '90%',
+        marginLeft: '5%',
+        marginBottom: '3%',
     },
 
     titulo: {
@@ -68,16 +69,9 @@ export const styles = StyleSheet.create({
         marginTop: '3%',
     },
     logo: {
-        width:80,
-        height:50,
+        width: 80,
+        height: 50,
 
     },
-    button: {
-        width: '40%',
-        height: '40%',
-        justifyContent: 'center',
-        backgroundColor: '#FF7B17',
-        alignItems: 'center',
-        borderRadius: 10,
-    },
+
 })

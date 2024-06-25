@@ -7,35 +7,25 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center'
     },
-
-    status:{
-        justifyContent: "center"
+    container2:{
+        flex: 0.5,
+        backgroundColor: '#0F0E0E',
+        justifyContent: 'flex-end',
+        marginBottom:15,
+        alignItems: 'center'
+    },
+    container3:{
+        flex: 1,
+        backgroundColor: '#0F0E0E',
+        justifyContent: 'flex-start',
+        alignItems: 'center'
     },
 
     header:{
         width: "100%",
-        height: 200,
-        marginVertical: 50,
-    },
-
-    button:{
-        width: "50%",
-        height: 60,
-        backgroundColor: "#FF7B17",
-        borderRadius: 50,
-        justifyContent: "center",
-        alignItems: "center",
-        marginVertical: 20
-    },
-
-    buttonSecond:{
-        width: "50%",
-        height: 60,
-        backgroundColor: "#FF7B17",
-        borderRadius: 50,
-        justifyContent: "center",
-        alignItems: "center",
-        marginVertical: 20
+        height: 250,
+        marginTop:100,
+        marginLeft:10,
     },
 
     text: {
