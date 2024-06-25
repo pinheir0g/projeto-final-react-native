@@ -10,7 +10,12 @@ export const postProduct = async (newProduct: {}) => {
     return data;
 }
 
-export const deleteProduct = async (productId: string) => {
+export const deleteProductById = async (productId: string) => {
     const { data } = await api.delete('/produtos/' + productId);
     return data
 }
+
+export const updateProduct = async (id: string, product: {}) => {
+    const {data} = await api.put("/produtos/" + id, product);
+    return data;
+} 

@@ -1,10 +1,13 @@
-import { StyleSheet, View, Image, Text, TextInput, Button, TouchableWithoutFeedback, Keyboard } from "react-native";
-import React, { useState } from "react";
+import { View, Image, Text, TextInput, Button, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
+import React, { useContext, useState } from "react";
 import { styles } from './styles';
 import { Usuario } from "../../types";
-import { postUser } from "../../services/usuariosCrud";
+import { UserContext } from "../../contexts/UserContext";
+import { CadastroProdutoProps } from "../../routes/stack";
 
-export function CadastroUsuario() {
+export function CadastroUsuario({navigation}: CadastroProdutoProps) {
+
+    const { saveUsuario } = useContext(UserContext);
 
     const [usuario, setUsuario] = useState<Usuario >({
             id: "",
@@ -18,20 +21,28 @@ export function CadastroUsuario() {
             [name]: value,
         });
     };
-    const saveUsuario = async () => {
+
+    const saveUser = async () => {
         const newUser = {
-            nome: usuario.nome,
-            email: usuario.email,
-            senha: usuario.senha
+            ...usuario
         }
-        //Add validação dos inputs
         try{
-            const user = await postUser(newUser);
-            //Colocar msg personalizada de cadastro com sucesso ou erro
-        } catch (err) {
+            const savedUser = await saveUsuario(newUser);
+            console.log(savedUser);
+            navigation.navigate('Login');
+            Alert.alert('Sucesso', 'Usuario cadastrado com sucesso.')
+            setUsuario({ 
+                id: "",
+                nome: "",
+                email: "",
+                senha: ""
+            });
+
+        }catch(err){
             console.log(err)
         };
-    }
+    };
+
 
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -66,7 +77,7 @@ export function CadastroUsuario() {
                     />
             </View>
             <View style={styles.posicaoBotao}>
-                <Button onPress={saveUsuario} title="Cadastrar Usuario"></Button>
+                <Button onPress={saveUser} title="Cadastrar Usuario"></Button>
                 {/* <TouchableOpacity onPress={} ></TouchableOpacity> */}
             </View>
         </View>

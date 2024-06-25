@@ -6,12 +6,13 @@ import Produtos from "../screens/Produtos";
 import CadastroProduto from "../screens/CadastroProduto";
 import DetalhesProduto from "../screens/DetalhesProduto";
 import { CadastroUsuario } from "../screens/CadastroUsuario";
+import { Produto } from "../types";
 
 type StackNavigation = {
     Home: undefined;
     Login: undefined;
     Produtos: undefined;
-    CadastroProduto: undefined;
+    CadastroProduto: {produto: Produto};
     DetalhesProduto: undefined;
     CadastroUsuario: undefined;
 }
