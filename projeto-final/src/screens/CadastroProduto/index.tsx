@@ -18,6 +18,7 @@ import * as ImagePicker from "expo-image-picker";
 import React from "react";
 import { Logo } from "../../components/Logo";
 import MaskInput, { createNumberMask } from "react-native-mask-input";
+import { ButtonPadrão } from "../../components/Button";
 
 const CadastroProduto = () => {
   const [produto, setProduto] = useState<Produto>({
@@ -56,8 +57,7 @@ const CadastroProduto = () => {
       newProduct.nome === "" ||
       newProduct.descricao === "" ||
       newProduct.preco === "" ||
-      newProduct.quantidade === "" ||
-      newProduct.imagem === ""
+      newProduct.quantidade === ""
     ) {
       Alert.alert("Alerta", "Nenhum campo pode estar vazio!");
       return;
@@ -157,9 +157,7 @@ const CadastroProduto = () => {
           </View>
         </View>
         <View style={styles.containerButton}>
-          <TouchableOpacity style={styles.button} onPress={saveProduto}>
-            <Text style={styles.textoImg}>Cadastrar Produto</Text>
-          </TouchableOpacity>
+          <ButtonPadrão title={"Cadastrar Produto"} onPress={saveProduto} />
         </View>
       </ScrollView>
     </TouchableWithoutFeedback>
