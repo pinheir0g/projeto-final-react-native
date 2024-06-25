@@ -1,26 +1,31 @@
 import React from 'react';
-import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Linking, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome, Entypo } from '@expo/vector-icons';
-import Thiago from '../../../assets/Thiago.png';
+import { styles } from './styles';
+
 import Logo from '../../../assets/LOGO.png';
+import Gustavo from '../../../assets/Gustavo.png';
+import Matheus from '../../../assets/Matheus.png';
+import Cassio from '../../../assets/Cassio.png';
+import Kaiky from '../../../assets/Kaiky.png';
+import Thiago from '../../../assets/Thiago.png';
 
 export function Sobre() {
 
+    const LinkGitGustavo = 'https://github.com/pinheir0g/';
+    const LinkGustavo = 'https://www.linkedin.com/in/gustavopinheiro-/';
 
-      const LinkGitThiago = 'https://github.com/ThiagoSausmikat';
-      const LinkThiago = 'https://www.linkedin.com/in/thiago-moura93/';
+    const LinkGitMatheus = 'https://github.com/Foncka';
+    const LinkMatheus = 'https://www.linkedin.com/in/matheusff002/';
 
-      const LinkGitGustavo = 'https://github.com/ThiagoSausmikat';
-      const LinkGustavo = 'https://www.linkedin.com/in/thiago-moura93/';
+    const LinkGitCassio = 'https://github.com/cassio-penha';
+    const LinkCassio = 'https://www.linkedin.com/in/c%C3%A1ssio-penha-pcd/';
 
-      const LinkGitMatheus = 'https://github.com/ThiagoSausmikat';
-      const LinkMatheus = 'https://www.linkedin.com/in/thiago-moura93/';
+    const LinkGitKaiky = 'https://github.com/kaikyazz';
+    const LinkKaiky = 'https://www.linkedin.com/in/kaiky-azevedo-de-oliveira-a1b1492b8/';
 
-      const LinkGitCassio = 'https://github.com/ThiagoSausmikat';
-      const LinkCassio = 'https://www.linkedin.com/in/thiago-moura93/';
-
-      const LinkGitKaiky = 'https://github.com/ThiagoSausmikat';
-      const LinkKaiky = 'https://www.linkedin.com/in/thiago-moura93/';
+    const LinkGitThiago = 'https://github.com/ThiagoSausmikat';
+    const LinkThiago = 'https://www.linkedin.com/in/thiago-moura93/';
 
     return (
     <View style={styles.container}>
@@ -32,8 +37,64 @@ export function Sobre() {
 
        <ScrollView style={styles.containerEquipe} showsVerticalScrollIndicator={false}>
         <View style={styles.contetEquipe}>
-            <Image  source={Thiago} style={styles.imgEquipe}/>
+            <Image  source={Gustavo} style={styles.imgEquipe}/>
             <Text style={styles.textEquipe}>Gustavo Pinheiro</Text>
+           
+            <View style={styles.conteinerIcon}>
+            <TouchableOpacity onPress={() => Linking.openURL(LinkGitGustavo)} >
+            <FontAwesome name="github" size={40} style={styles.iconGit} />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => Linking.openURL(LinkGustavo)}>
+            <Entypo name="linkedin-with-circle" style={styles.iconLinkedin} />
+            </TouchableOpacity>
+            </View>
+        </View>
+        <View style={styles.contetEquipe}>
+            <Image source={Matheus} style={styles.imgEquipe}/>
+            <Text style={styles.textEquipe}>Matheus Fonseca</Text>
+            
+            <View style={styles.conteinerIcon}>
+            <TouchableOpacity onPress={() => Linking.openURL(LinkGitMatheus)} >
+            <FontAwesome name="github" size={40} style={styles.iconGit} />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => Linking.openURL(LinkMatheus)}>
+            <Entypo name="linkedin-with-circle" style={styles.iconLinkedin} />
+            </TouchableOpacity>
+            </View>
+        </View>
+        <View style={styles.contetEquipe}>
+            <Image source={Cassio} style={styles.imgEquipe}/>
+            <Text style={styles.textEquipe}>Cássio Penha</Text>
+           
+            <View style={styles.conteinerIcon}>
+            <TouchableOpacity onPress={() => Linking.openURL(LinkGitCassio)} >
+            <FontAwesome name="github" size={40} style={styles.iconGit} />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => Linking.openURL(LinkCassio)}>
+            <Entypo name="linkedin-with-circle" style={styles.iconLinkedin} />
+            </TouchableOpacity>
+            </View>
+        </View>
+        <View style={styles.contetEquipe}>
+            <Image source={Kaiky} style={styles.imgEquipe}/>
+            <Text style={styles.textEquipe}>Kaiky azevedo</Text>
+            
+            <View style={styles.conteinerIcon}>
+            <TouchableOpacity onPress={() => Linking.openURL(LinkGitKaiky)} >
+            <FontAwesome name="github" size={40} style={styles.iconGit} />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => Linking.openURL(LinkKaiky)}>
+            <Entypo name="linkedin-with-circle" style={styles.iconLinkedin} />
+            </TouchableOpacity>
+            </View>
+        </View>
+        <View style={styles.contetEquipe}>
+            <Image source={Thiago} style={styles.imgEquipe}/>
+            <Text style={styles.textEquipe}>Thiago Moura</Text>
            
             <View style={styles.conteinerIcon}>
             <TouchableOpacity onPress={() => Linking.openURL(LinkGitThiago)} >
@@ -45,86 +106,8 @@ export function Sobre() {
             </TouchableOpacity>
             </View>
         </View>
-        <View style={styles.contetEquipe}>
-            <Image source={Thiago} style={styles.imgEquipe}/>
-            <Text style={styles.textEquipe}>Matheus Fonseca</Text>
-            
-        </View>
-        <View style={styles.contetEquipe}>
-            <Image source={Thiago} style={styles.imgEquipe}/>
-            <Text style={styles.textEquipe}>Cássio Penha</Text>
-
-        </View>
-        <View style={styles.contetEquipe}>
-            <Image source={Thiago} style={styles.imgEquipe}/>
-            <Text style={styles.textEquipe}>Kaiky azevedo</Text>
-
-        </View>
-        <View style={styles.contetEquipe}>
-            <Image source={Thiago} style={styles.imgEquipe}/>
-            <Text style={styles.textEquipe}>Thiago Moura</Text>
-
-        </View>
        </ScrollView>
 
     </View>
     );
   }
-
-  const styles = StyleSheet.create({
-    container: {
-         flex: 1,
-         backgroundColor: '#0F0E0E',
-    },
-    conteinerIcon: {
-        flexDirection: "column",
-    },
-    iconGit: {
-        fontSize: 40,
-        marginBottom: 15,
-        color: '#fff'
-      },
-      iconLinkedin: {
-        fontSize: 35,
-        color: '#fff'
-      },
-    containerlogoTitulo: {
-        flex: 0.6,
-        alignItems: 'center',
-    },
-    imgLogo: {
-        height: "60%",
-        width: 200,
-        marginTop: 25,
-    },
-    titulo: {
-        color: "#FF7B17",
-        fontSize: 30,
-        marginTop: 10,
-    },
-    containerEquipe: {
-        flex: 1,
-    },
-    contetEquipe: {
-        flex: 0.3,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginVertical: 8,
-        backgroundColor: '#FF7B17',
-    },
-    textEquipe: {
-        color: '#fff',
-        fontSize: 18,
-        justifyContent: "space-between",
-    },
-    imgEquipe: {
-        height: 100,
-        width: 100,
-        alignItems: "center",
-        justifyContent: "center",
-        
-    },
-  });
