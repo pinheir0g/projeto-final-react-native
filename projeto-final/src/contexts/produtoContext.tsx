@@ -10,11 +10,15 @@ type ProductContextType = {
     saveProduct: (produto: Produto) => void;
     editProduct: (produto: Produto) => void;
     deleteProduct: (id: string) => void;
+    categoria: string;
+    setCategoria: (categoria: string) => void; 
 }
 export const ProductContext = createContext<ProductContextType>({} as ProductContextType);
 
 export const ProductProvider = ({children}: PropsChildren) => {
     const [products, setProducts] = useState<Produto[]>([]);
+
+    const [categoria, setCategoria] = useState('');
 
 
     const getProducts = async () => {
@@ -56,7 +60,9 @@ export const ProductProvider = ({children}: PropsChildren) => {
 
     return (
     <ProductContext.Provider value={{
-        products, 
+        products,
+        categoria,
+        setCategoria,
         getProducts,
         saveProduct,
         editProduct,
