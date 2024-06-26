@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
     color: "white",
     fontFamily: "System",
     fontWeight: "bold",
+    fontSize:25,
   },
 
   bottomSair: {
@@ -40,6 +41,6 @@ export const styles = StyleSheet.create({
   sair: {
     color: "#D92744",
     fontFamily: "Museo-Moderno-Medium",
-    fontSize: 16,
+    fontSize: 25,
   },
 });

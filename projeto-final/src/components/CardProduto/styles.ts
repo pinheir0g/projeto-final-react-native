@@ -2,10 +2,11 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     product: {
-        width: 335,
+        width: 400,
         padding: 15,
         backgroundColor: '#D9D9D9',
         flexDirection: 'row',
+        justifyContent:'space-around',
         borderRadius: 20,
         gap: 10,
     },

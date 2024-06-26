@@ -36,6 +36,7 @@ export const styles = StyleSheet.create({
         color: 'black',
         fontSize: 25
     },
+    
     input: {
         height: 40,
         borderColor: 'gray',
@@ -45,7 +46,7 @@ export const styles = StyleSheet.create({
         borderRadius: 15,
         backgroundColor: 'white',
     },
-
+    
     form: {
         flex: 0.9,
         width: '90%'

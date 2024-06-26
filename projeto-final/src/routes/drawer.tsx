@@ -1,4 +1,8 @@
-import { DrawerNavigationProp, DrawerScreenProps, createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  DrawerNavigationProp,
+  DrawerScreenProps,
+  createDrawerNavigator,
+} from "@react-navigation/drawer";
 import React from "react";
 import { ProdutosStack } from "./stack";
 import CustomDrawerContent from "../screens/CustomDrawer";
@@ -46,4 +50,4 @@ const DrawerComponent = () => {
     );
 };
 
-export default DrawerComponent
+export default DrawerComponent;

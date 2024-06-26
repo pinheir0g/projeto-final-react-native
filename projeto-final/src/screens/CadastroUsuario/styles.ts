@@ -2,15 +2,10 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 3,
         backgroundColor: '#0F0E0E',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-
-    Scrolada: {
-        flex: 1,
-        backgroundColor: "#0F0E0E"
     },
 
     View: {
@@ -19,17 +14,18 @@ export const styles = StyleSheet.create({
     },
     texto: {
         color: 'white',
-        fontSize: 15,
-        marginBottom:5,
+        fontSize: 25,
+        marginBottom: 5,
     },
 
     input: {
-        height: 30,
-        paddingLeft:15,
+        height: 40,
+        paddingLeft: 15,
         borderColor: 'gray',
         marginBottom: 10,
         borderRadius: 15,
         backgroundColor: 'white',
+        fontSize: 20
     },
     form: {
         flex: 0.9,
@@ -38,18 +34,16 @@ export const styles = StyleSheet.create({
     },
 
     logo: {
-        alignItems:'flex-start',
-        justifyContent:'flex-start',
-        height: 170 ,
+        height: 170,
         width: 235,
         marginTop: "2%",
-        position:'static',
+        position: 'static',
     },
 
     posicaoBotao: {
-        height: "10%" ,
-        width: "100%",
-        bottom: "3%",
+        marginBottom: 15,
+        backgroundColor: '#0F0E0E'
+
     },
 
     horizontal: {
