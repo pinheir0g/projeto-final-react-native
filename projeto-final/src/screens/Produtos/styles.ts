@@ -2,11 +2,8 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        marginTop: '10%',
-        flex: 10,
         backgroundColor: '#0F0E0E',
-        justifyContent: 'center',
-        alignItems: 'center',
+        height: '100%'
     },
     header: {
         flexDirection: 'row',
@@ -33,21 +30,20 @@ export const styles = StyleSheet.create({
     categoria: {
         color: 'white',
         fontSize: 24,
-        marginBottom: 20,
-        justifyContent: 'space-between',
+        paddingVertical: 5,
+        paddingHorizontal: 20
     },
     productsContainer: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
-        top: 10,
-        width: '95%',
-
+        width: '100%',
+        justifyContent: 'center'
     },
-    categoriaPc: {
-        backgroundColor: 'yellow'
+    scrollView: {
+        width: '100%',
+        justifyContent: 'center',
+        paddingBottom: 30
     },
-    categoriaMonitor:{
-        backgroundColor: 'green'
+    
+    categoriaContainer: {
+        marginVertical: 5,
     },
 });
