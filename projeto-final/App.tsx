@@ -3,6 +3,7 @@ import Routes from './src/routes';
 import React from 'react';
 import UserProvider from './src/contexts/UserContext';
 import ProductProvider from './src/contexts/produtoContext';
+import ToastManager from 'toastify-react-native';
 
 export default function App() {
 
@@ -11,6 +12,7 @@ export default function App() {
       <UserProvider>
         <ProductProvider>
         <NavigationContainer>
+          <ToastManager />
           <Routes />
         </NavigationContainer>
         </ProductProvider>

@@ -4,10 +4,8 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  Linking,
   TouchableWithoutFeedback,
   Keyboard,
-  Alert,
   ActivityIndicator,
 } from "react-native";
 import { styles } from "./styles";
@@ -15,6 +13,8 @@ import { useContext, useState } from "react";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import React from "react";
 import { UserContext } from "../../contexts/UserContext";
+import ToastManager, { Toast } from 'toastify-react-native';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,9 +29,14 @@ const Login = () => {
   const {login} = useContext(UserContext);
 
   const logar = async () => {
-    setLoading(true)
+    // setLoading(true);
     try{
-      await login(email, password)
+      const logado = await login(email, password);
+      if (logado) {
+      }else {
+        Toast.error("Erro ao realizar login.", "center");
+        console.log("Test")
+      }
 
     }catch(err){
       console.log(err)
@@ -49,6 +54,7 @@ const Login = () => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} >
       <View style={styles.container}>
+      <ToastManager />
       {/* Alinhar a logo */}
         <Image
           style={styles.header}
