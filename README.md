@@ -1,4 +1,6 @@
-Desenvolver um aplicativo que será usado para gerenciar produtos e deve ser protegido com login e senha.
+# Projeto Final React Native - Serratec Info
+
+## Desenvolver um aplicativo que será usado para gerenciar produtos e deve ser protegido com login e senha.
 
 Páginas do aplicativo:
 - Página de Inicial.
