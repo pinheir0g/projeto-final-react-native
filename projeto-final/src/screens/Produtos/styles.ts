@@ -26,9 +26,9 @@ export const styles = StyleSheet.create({
     logoContainer: {
         flex: 1,
         alignItems: 'center',
-        flexDirection:'row',
-        justifyContent:'space-between',
-        marginRight:10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginRight: 10,
     },
     categoria: {
         color: 'white',

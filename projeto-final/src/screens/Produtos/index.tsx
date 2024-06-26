@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { useContext, useEffect } from "react";
 import { Produto } from "../../types";
@@ -16,9 +10,7 @@ import { ProductContext } from "../../contexts/produtoContext";
 import { CardProduto } from "../../components/CardProduto";
 
 const Produtos = ({ navigation }: any) => {
-
   const { products, getProducts, deleteProduct } = useContext(ProductContext);
-
 
   const handleNovoProduto = () => {
     navigation.navigate("CadastroProduto");
@@ -44,7 +36,6 @@ const Produtos = ({ navigation }: any) => {
 
   useEffect(() => {
     getProducts();
-
   }, []);
 
   return (

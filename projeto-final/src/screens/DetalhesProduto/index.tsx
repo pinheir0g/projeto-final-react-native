@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, Image } from "react-native";
 import { styles } from "./styles";
 import { ButtonPadrão } from "../../components/Button";
 import { DetalhesProdutoProps } from "../../routes/stack";
+import { ProductContext } from "../../contexts/produtoContext";
+import { Produto } from "../../types";
 
-export default function DetalhesProduto({route}:DetalhesProdutoProps) {
+export default function DetalhesProduto({route,navigation}:DetalhesProdutoProps) {
   
+  const { deleteProduct } = useContext(ProductContext);
+
+  const handleEditProduct = async (product: Produto) => {
+    navigation.navigate('CadastroProduto', { produto: product });
+  }
+
+  const navegar = () => {
+    navigation.navigate("Produtos");
+  };
+
   const props = route.params.produto;
   
   return (
@@ -38,15 +50,12 @@ export default function DetalhesProduto({route}:DetalhesProdutoProps) {
       <View style={styles.container6}>
         <ButtonPadrão
           title={"Deletar"}
-          onPress={function (): void {
-            throw new Error("Function not implemented.");
-          }}
+          onPress={()=>(deleteProduct(props.id))
+          }
         />
         <ButtonPadrão
           title={"Editar"}
-          onPress={function (): void {
-            throw new Error("Function not implemented.");
-          }}
+          onPress={()=>handleEditProduct(props)}
         />
       </View>
     </View>
