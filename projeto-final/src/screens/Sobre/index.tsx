@@ -1,130 +1,93 @@
-import React from 'react';
-import { Image, Linking, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Linking, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome, Entypo } from '@expo/vector-icons';
-import Thiago from '../../../assets/Thiago.png';
-import Logo from '../../../assets/LOGO.png';
+import { styles } from './styles';
 
 export function Sobre() {
 
-
-      const LinkGitThiago = 'https://github.com/ThiagoSausmikat';
-      const LinkThiago = 'https://www.linkedin.com/in/thiago-moura93/';
-
-      const LinkGitGustavo = 'https://github.com/ThiagoSausmikat';
-      const LinkGustavo = 'https://www.linkedin.com/in/thiago-moura93/';
-
-      const LinkGitMatheus = 'https://github.com/ThiagoSausmikat';
-      const LinkMatheus = 'https://www.linkedin.com/in/thiago-moura93/';
-
-      const LinkGitCassio = 'https://github.com/ThiagoSausmikat';
-      const LinkCassio = 'https://www.linkedin.com/in/thiago-moura93/';
-
-      const LinkGitKaiky = 'https://github.com/ThiagoSausmikat';
-      const LinkKaiky = 'https://www.linkedin.com/in/thiago-moura93/';
+    const linkGit = 'https://github.com/';
+    const linkdin = 'https://www.linkedin.com/in/';
 
     return (
     <View style={styles.container}>
       
        <View style={styles.containerlogoTitulo}>
-        <Image source={Logo} style={styles.imgLogo}/>
+        <Image source={require('../../../assets/LOGO.png')} style={styles.imgLogo}/>
         <Text style={styles.titulo}>Nossa Equipe</Text>
        </View>
 
        <ScrollView style={styles.containerEquipe} showsVerticalScrollIndicator={false}>
         <View style={styles.contetEquipe}>
-            <Image  source={Thiago} style={styles.imgEquipe}/>
+            <Image  source={require('../../../assets/Gustavo.png')} style={styles.imgEquipe}/>
             <Text style={styles.textEquipe}>Gustavo Pinheiro</Text>
            
             <View style={styles.conteinerIcon}>
-            <TouchableOpacity onPress={() => Linking.openURL(LinkGitThiago)} >
+            <TouchableOpacity onPress={() => Linking.openURL(linkGit + "pinheir0g/")} >
             <FontAwesome name="github" size={40} style={styles.iconGit} />
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => Linking.openURL(LinkThiago)}>
+            <TouchableOpacity onPress={() => Linking.openURL(linkdin + "gustavopinheiro-/")}>
             <Entypo name="linkedin-with-circle" style={styles.iconLinkedin} />
             </TouchableOpacity>
             </View>
         </View>
         <View style={styles.contetEquipe}>
-            <Image source={Thiago} style={styles.imgEquipe}/>
+            <Image source={require('../../../assets/Matheus.png')} style={styles.imgEquipe}/>
             <Text style={styles.textEquipe}>Matheus Fonseca</Text>
             
+            <View style={styles.conteinerIcon}>
+            <TouchableOpacity onPress={() => Linking.openURL(linkGit + "Foncka")} >
+            <FontAwesome name="github" size={40} style={styles.iconGit} />
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => Linking.openURL(linkdin + "matheusff002/")}>
+            <Entypo name="linkedin-with-circle" style={styles.iconLinkedin} />
+            </TouchableOpacity>
+            </View>
         </View>
         <View style={styles.contetEquipe}>
-            <Image source={Thiago} style={styles.imgEquipe}/>
+            <Image source={require('../../../assets/Cassio.png')} style={styles.imgEquipe}/>
             <Text style={styles.textEquipe}>Cássio Penha</Text>
+           
+            <View style={styles.conteinerIcon}>
+            <TouchableOpacity onPress={() => Linking.openURL(linkGit + "cassio-penha")} >
+            <FontAwesome name="github" size={40} style={styles.iconGit} />
+            </TouchableOpacity>
 
+            <TouchableOpacity onPress={() => Linking.openURL(linkdin + "c%C3%A1ssio-penha-pcd/")}>
+            <Entypo name="linkedin-with-circle" style={styles.iconLinkedin} />
+            </TouchableOpacity>
+            </View>
         </View>
         <View style={styles.contetEquipe}>
-            <Image source={Thiago} style={styles.imgEquipe}/>
+            <Image source={require('../../../assets/Kaiky.png')} style={styles.imgEquipe}/>
             <Text style={styles.textEquipe}>Kaiky azevedo</Text>
+            
+            <View style={styles.conteinerIcon}>
+            <TouchableOpacity onPress={() => Linking.openURL(linkGit + "kaikyazz")} >
+            <FontAwesome name="github" size={40} style={styles.iconGit} />
+            </TouchableOpacity>
 
+            <TouchableOpacity onPress={() => Linking.openURL(linkdin + "kaiky-azevedo-de-oliveira-a1b1492b8/")}>
+            <Entypo name="linkedin-with-circle" style={styles.iconLinkedin} />
+            </TouchableOpacity>
+            </View>
         </View>
         <View style={styles.contetEquipe}>
-            <Image source={Thiago} style={styles.imgEquipe}/>
+            <Image source={require('../../../assets/Thiago.png')} style={styles.imgEquipe}/>
             <Text style={styles.textEquipe}>Thiago Moura</Text>
+           
+            <View style={styles.conteinerIcon}>
+            <TouchableOpacity onPress={() => Linking.openURL(linkGit + "ThiagoSausmikat")} >
+            <FontAwesome name="github" size={40} style={styles.iconGit} />
+            </TouchableOpacity>
 
+            <TouchableOpacity onPress={() => Linking.openURL(linkdin + "thiago-moura93/")}>
+            <Entypo name="linkedin-with-circle" style={styles.iconLinkedin} />
+            </TouchableOpacity>
+            </View>
         </View>
        </ScrollView>
 
     </View>
     );
   }
-
-  const styles = StyleSheet.create({
-    container: {
-         flex: 1,
-         backgroundColor: '#0F0E0E',
-    },
-    conteinerIcon: {
-        flexDirection: "column",
-    },
-    iconGit: {
-        fontSize: 40,
-        marginBottom: 15,
-        color: '#fff'
-      },
-      iconLinkedin: {
-        fontSize: 35,
-        color: '#fff'
-      },
-    containerlogoTitulo: {
-        flex: 0.6,
-        alignItems: 'center',
-    },
-    imgLogo: {
-        height: "60%",
-        width: 200,
-        marginTop: 25,
-    },
-    titulo: {
-        color: "#FF7B17",
-        fontSize: 30,
-        marginTop: 10,
-    },
-    containerEquipe: {
-        flex: 1,
-    },
-    contetEquipe: {
-        flex: 0.3,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        paddingHorizontal: 10,
-        paddingVertical: 5,
-        marginVertical: 8,
-        backgroundColor: '#FF7B17',
-    },
-    textEquipe: {
-        color: '#fff',
-        fontSize: 18,
-        justifyContent: "space-between",
-    },
-    imgEquipe: {
-        height: 100,
-        width: 100,
-        alignItems: "center",
-        justifyContent: "center",
-        
-    },
-  });

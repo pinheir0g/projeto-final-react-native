@@ -1,6 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
 import Routes from './src/routes';
-import React from 'react';
 import UserProvider from './src/contexts/UserContext';
 import ProductProvider from './src/contexts/produtoContext';
 import ToastManager from 'toastify-react-native';
