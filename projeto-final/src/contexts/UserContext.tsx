@@ -6,7 +6,7 @@ import { Alert } from "react-native";
 
 type UserCtxData = {
     user: null | Usuario,
-    login(email: string, senha: string): Promise<void>,
+    login(email: string, senha: string): Promise<boolean>,
     logout(): void
     signed: boolean,
     saveUsuario(usuario: Usuario): Promise<void>,
@@ -29,13 +29,14 @@ const UserProvider = ({ children }: PropsChildren) => {
 
             if (authUser) {
                 setUser(authUser);
-                Alert.alert('Sucesso', 'Logado com sucesso!');
+                return authUser    // Alert.alert('Sucesso', 'Logado com sucesso!');
             } else {
-                Alert.alert('Erro', 'Dados inválidos');
+                return authUser// Alert.alert('Erro', 'Dados inválidos');
             }
         } catch (err) {
             console.log(err)
         }
+
     }
 
     const logout = () => {
