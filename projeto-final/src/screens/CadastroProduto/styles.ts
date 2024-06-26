@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
     },
     containerFoto: {
         marginTop: 10,
-        marginBottom: 20,
         width: '100%',
         height: 250,
         justifyContent: 'center',
@@ -27,7 +26,6 @@ export const styles = StyleSheet.create({
 
     },
     containerButton:{
-        marginTop:20,
         width:380,
         height:80,
         justifyContent:'center',
