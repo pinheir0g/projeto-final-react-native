@@ -29,17 +29,17 @@ export const ProductProvider = ({children}: PropsChildren) => {
     const saveProduct = async (newProduct: Produto) => {
         try{
             const produto = await postProduct(newProduct)
-            setProducts([...products, newProduct]);
+            setProducts([...products, produto]);
         }catch(err){
             console.log(err)
         }
     };
 
     const editProduct = async (editedProduct: Produto) => {
-        setProducts(products.map(produto => (produto.id === editedProduct.id ? editedProduct: produto)))
-        try{
-            const updatedProduct = await updateProduct(editedProduct.id, editedProduct);
-        }catch(err){
+      try{
+        const updatedProduct = await updateProduct(editedProduct.id, editedProduct);
+        setProducts(products.map(produto => (produto.id === editedProduct.id ? updatedProduct: produto)))
+      }catch(err){
             console.log(err)
         }
     };

@@ -13,7 +13,6 @@ import {
 } from "react-native";
 import { Produto } from "../../types";
 import { styles } from "./styles";
-import { updateProduct } from "../../services/produtosCrud";
 import * as ImagePicker from "expo-image-picker";
 import React from "react";
 import { Logo } from "../../components/Logo";
@@ -32,7 +31,8 @@ const CadastroProduto = ({ navigation, route }: CadastroProdutoProps) => {
     descricao: '',
     preco: '',
     quantidade: '',
-    imagem: ''
+    categoria: '',
+    imagem: '',
   });
   const props = route.params;
   const [loading, setLoading] = useState(false);
@@ -53,13 +53,13 @@ const CadastroProduto = ({ navigation, route }: CadastroProdutoProps) => {
 
   const saveProduto = async () => {
     const newProduct = {
-      ...produto,
-      id: produto.id
+      ...produto
     }
-    if (newProduct.nome === '' || newProduct.descricao === '' || newProduct.preco === '' || newProduct.quantidade === '' || newProduct.imagem === '') {
+    if (newProduct.nome === '' || newProduct.descricao === '' || newProduct.categoria === '' || newProduct.quantidade === '' || newProduct.preco === '' || newProduct.imagem === '') {
       Alert.alert('Alerta', "Nenhum campo pode estar vazio!");
       return;
     }
+
     setLoading(true);
     try {
       if (produto.id) {
@@ -76,6 +76,7 @@ const CadastroProduto = ({ navigation, route }: CadastroProdutoProps) => {
         descricao: '',
         preco: '',
         quantidade: '',
+        categoria: '',
         imagem: ''
 
       });
@@ -153,6 +154,12 @@ const CadastroProduto = ({ navigation, route }: CadastroProdutoProps) => {
               value={produto.quantidade}
               keyboardType="numeric"
               onChangeText={(value) => handleChange("quantidade", value)}
+            />
+            <Text style={styles.texto}>Categoria</Text>
+            <TextInput
+              style={styles.input}
+              value={produto.categoria}
+              onChangeText={(value) => handleChange("categoria", value)}
             />
             <View style={styles.containerFoto}>
               {produto.imagem && (

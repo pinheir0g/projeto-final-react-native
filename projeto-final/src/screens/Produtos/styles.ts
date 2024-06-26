@@ -30,20 +30,9 @@ export const styles = StyleSheet.create({
         justifyContent:'space-between',
         marginRight:10,
     },
-    
     categoria: {
         color: 'white',
         fontSize: 24,
-        margin: 5
-    },
-    title: {
-        color: 'black',
-        fontSize: 24,
-        margin: 5
-    },
-    quantidade: {
-        color: 'black',
-        fontSize: 12,
         margin: 5
     },
     productsContainer: {
@@ -54,28 +43,10 @@ export const styles = StyleSheet.create({
         width: '95%',
 
     },
-    imagemProduto:{
-        width: 100, 
-        height: 100, 
-        borderRadius: 15 
+    categoriaPc: {
+        backgroundColor: 'yellow'
     },
-    product: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
-        padding: 15,
-        backgroundColor: '#D9D9D9',
-        flexDirection: 'row',
-        borderRadius: 20,
-        gap: 10,
-        marginBottom: "5%"
-
-    },
-    productInfo: {
-        flex: 1,
-    },
-    btn: {
-        flex: 0.23,
-        justifyContent: 'space-between'
+    categoriaMonitor:{
+        backgroundColor: 'green'
     },
 });
