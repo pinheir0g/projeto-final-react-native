@@ -8,6 +8,9 @@ import {
   Alert,
   TouchableOpacity,
   ActivityIndicator,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
 
 } from "react-native";
 import React, { useContext, useState } from "react";
@@ -16,6 +19,7 @@ import { Usuario } from "../../types";
 import { UserContext } from "../../contexts/UserContext";
 import { CadastroProdutoProps } from "../../routes/stack";
 import { ButtonPadrão } from "../../components/Button";
+
 
 export function CadastroUsuario({ navigation }: CadastroProdutoProps) {
 
@@ -68,6 +72,11 @@ export function CadastroUsuario({ navigation }: CadastroProdutoProps) {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} disabled={loading}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+      <ScrollView contentContainerStyle={styles.Scrolada}>
       <View style={styles.container}>
         <Image
           style={styles.logo}
@@ -97,15 +106,17 @@ export function CadastroUsuario({ navigation }: CadastroProdutoProps) {
           <Text style={styles.texto}>Confirmar senha</Text>
           <TextInput style={styles.input} />
         </View>
+      </View>
         <View style={styles.posicaoBotao}>
           <ButtonPadrão
-            title={"Cadastrar Usuario"}
+            title={"Cadastrar"}
             onPress={() => {
               saveUser();
             }}
           />
         </View>
-      </View>
+    </ScrollView>
+    </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 }

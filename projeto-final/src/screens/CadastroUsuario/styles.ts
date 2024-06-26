@@ -7,48 +7,53 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+
+    Scrolada: {
+        flex: 1,
+        backgroundColor: "#0F0E0E"
+    },
+
     View: {
         flex: 1,
         backgroundColor: '#0F0E0E',
     },
     texto: {
         color: 'white',
-        fontSize: 25,
-        fontWeight:'bold',
+        fontSize: 15,
         marginBottom:5,
     },
 
     input: {
-        height: 40,
+        height: 30,
         paddingLeft:15,
         borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 15,
+        marginBottom: 10,
         borderRadius: 15,
         backgroundColor: 'white',
     },
     form: {
         flex: 0.9,
         width: '80%',
-        marginTop: "8%"
+        marginTop: "1%"
     },
 
     logo: {
         alignItems:'flex-start',
         justifyContent:'flex-start',
-        height: 200 ,
-        width: 300,
-        marginTop: "3%",
+        height: 170 ,
+        width: 235,
+        marginTop: "2%",
         position:'static',
     },
 
     posicaoBotao: {
-        bottom: "5%",
+        height: "10%" ,
+        width: "100%",
+        bottom: "3%",
     },
 
     horizontal: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        padding: 10,
-      },
+    },
 });
