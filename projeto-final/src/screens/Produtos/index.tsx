@@ -93,11 +93,11 @@ const Produtos = ({ navigation }: any) => {
           data={products}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <CardProduto
-              produto={item}
-              onPress={() => handleDetalhesProduto(item)}
-              onPressDel={() => deleteProduct(item.id)}
-              onPressEdit={() => handleEditProduct(item)}
+          <CardProduto
+          produto={item}
+          onPress={() => handleDetalhesProduto(item)}
+            onPressDel={() => deleteProduct(item.id)}
+            onPressEdit={() => handleEditProduct(item)}
             />
           )}
         />

@@ -33,7 +33,8 @@ export const styles = StyleSheet.create({
     categoria: {
         color: 'white',
         fontSize: 24,
-        margin: 5
+        marginBottom: 20,
+        justifyContent: 'space-between',
     },
     productsContainer: {
         flex: 1,

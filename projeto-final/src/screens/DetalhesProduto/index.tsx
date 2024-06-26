@@ -6,20 +6,17 @@ import { DetalhesProdutoProps } from "../../routes/stack";
 import { ProductContext } from "../../contexts/produtoContext";
 import { Produto } from "../../types";
 
-export default function DetalhesProduto({route,navigation}:DetalhesProdutoProps) {
-  
+export default function DetalhesProduto({
+  route,
+  navigation,
+}: DetalhesProdutoProps) {
   const { deleteProduct } = useContext(ProductContext);
 
   const handleEditProduct = async (product: Produto) => {
-    navigation.navigate('CadastroProduto', { produto: product });
-  }
-
-  const navegar = () => {
-    navigation.navigate("Produtos");
+    navigation.navigate("CadastroProduto", { produto: product });
   };
-
   const props = route.params.produto;
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
@@ -30,7 +27,10 @@ export default function DetalhesProduto({route,navigation}:DetalhesProdutoProps)
       </View>
 
       <View style={styles.container2}>
-        <Image style={styles.imagemPrincipal} source={{uri:props.imagem}}></Image>
+        <Image
+          style={styles.imagemPrincipal}
+          source={{ uri: props.imagem }}
+        ></Image>
       </View>
 
       <View style={styles.container3}>
@@ -50,12 +50,14 @@ export default function DetalhesProduto({route,navigation}:DetalhesProdutoProps)
       <View style={styles.container6}>
         <ButtonPadrão
           title={"Deletar"}
-          onPress={()=>(deleteProduct(props.id))
-          }
+          onPress={() => {
+            deleteProduct(props.id);
+            navigation.navigate("Produtos");
+          }}
         />
         <ButtonPadrão
           title={"Editar"}
-          onPress={()=>handleEditProduct(props)}
+          onPress={() => handleEditProduct(props)}
         />
       </View>
     </View>
