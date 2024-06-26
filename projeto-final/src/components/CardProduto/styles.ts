@@ -1,29 +1,25 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-
-    imagemProduto:{
-        width: 100, 
-        height: 100, 
-        borderRadius: 15 
-    },
     product: {
-        flex: 1,
-        width: '100%',
-        height: '100%',
+        width: 335,
         padding: 15,
         backgroundColor: '#D9D9D9',
         flexDirection: 'row',
         borderRadius: 20,
         gap: 10,
-        marginBottom: "5%"
+    },
 
+    imagemProduto: {
+        width: 100,
+        height: 100,
+        borderRadius: 15
     },
     productInfo: {
-        flex: 1,
+        width: '50%',
     },
     btn: {
-        flex: 0.23,
+        width: 30,
         justifyContent: 'space-between'
     },
     title: {

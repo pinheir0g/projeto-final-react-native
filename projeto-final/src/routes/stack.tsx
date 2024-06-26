@@ -40,7 +40,7 @@ export const AuthStackNavigation = () => {
     return(
     <Navigator>
        <Screen name="animacao" component={Splash} />
-        <Screen name="Home" component={Home} />
+        <Screen name="Home" component={Home} options={{ headerShown: false,}} />
         <Screen name="Login" component={Login} />
         <Screen name="CadastroUsuario" component={CadastroUsuario}/>
     </Navigator>

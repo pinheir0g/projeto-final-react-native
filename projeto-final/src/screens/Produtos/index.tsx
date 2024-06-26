@@ -1,4 +1,10 @@
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { styles } from "./styles";
 import { useContext, useEffect } from "react";
 import { Produto } from "../../types";
@@ -22,13 +28,12 @@ const Produtos = ({ navigation }: any) => {
 
   const handleEditProduct = async (product: Produto) => {
     navigation.navigate('CadastroProduto', { produto: product });
-
   }
 
   const pcs = products.filter(product => product.categoria === 'PC');
   const monitores = products.filter(product => product.categoria === 'Monitor');
-  const cadeiras = products.filter(product => product.categoria === 'Monitor');
-  const perifericos = products.filter(product => product.categoria === 'Monitor');
+  const cadeiras = products.filter(product => product.categoria === 'Cadeira');
+  const perifericos = products.filter(product => product.categoria === 'Perifericos');
 
   const toggleDrawer = () => {
     navigation.toggleDrawer();
@@ -37,6 +42,32 @@ const Produtos = ({ navigation }: any) => {
   useEffect(() => {
     getProducts();
   }, []);
+
+  const renderCategoria = (title: string, item: Produto[]) => {
+    return (
+      <View style={styles.categoriaContainer}>
+        <Text style={styles.categoria}>{title}</Text>
+        <View style={styles.productsContainer}>
+          <FlatList
+            data={item}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <CardProduto
+                produto={item}
+                onPress={() => handleDetalhesProduto(item)}
+                onPressDel={() => deleteProduct(item.id)}
+                onPressEdit={() => handleEditProduct(item)}
+              />
+            )}
+            horizontal
+            ItemSeparatorComponent={() => <View style={{width: 20}}/>}
+            ListFooterComponent={() => <View style={{width: 20}}/>}
+            ListHeaderComponent={() => <View style={{width: 20}}/>}
+          />
+        </View>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -57,51 +88,12 @@ const Produtos = ({ navigation }: any) => {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.productsContainer}>
-        <View style={styles.categoriaPc}>
-          <Text style={styles.categoria}>PC</Text>
-          <FlatList
-            data={pcs}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <CardProduto
-                produto={item}
-                onPress={() => handleDetalhesProduto(item)}
-                onPressDel={() => deleteProduct(item.id)}
-                onPressEdit={() => handleEditProduct(item)}
-              />
-            )}
-          />
-        </View>
-        <View style={styles.categoriaMonitor}>
-          <Text style={styles.categoria}>Monitor</Text>
-          <FlatList
-            data={monitores}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <CardProduto
-                produto={item}
-                onPress={() => handleDetalhesProduto(item)}
-                onPressDel={() => deleteProduct(item.id)}
-                onPressEdit={() => handleEditProduct(item)}
-              />
-            )}
-          />
-        </View>
-        <Text style={styles.categoria}>PC</Text>
-        <FlatList
-          data={products}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <CardProduto
-              produto={item}
-              onPress={() => handleDetalhesProduto(item)}
-              onPressDel={() => deleteProduct(item.id)}
-              onPressEdit={() => handleEditProduct(item)}
-            />
-          )}
-        />
-      </View>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        {pcs && renderCategoria('PC', pcs)}
+        {monitores && renderCategoria('Monitor', monitores)}
+        {perifericos && renderCategoria('Periféricos', perifericos)}
+        {cadeiras && renderCategoria('Cadeiras', cadeiras)}
+      </ScrollView>
     </View>
   );
 };
