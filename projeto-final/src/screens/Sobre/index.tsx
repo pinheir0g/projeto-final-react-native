@@ -1,15 +1,29 @@
 import { Image, Linking, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { FontAwesome, Entypo } from '@expo/vector-icons';
 import { styles } from './styles';
+import { EquipeProps } from "../../routes/drawer";
+import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 
-export function Sobre() {
+export function Sobre({navigation}: EquipeProps) {
 
     const linkGit = 'https://github.com/';
     const linkdin = 'https://www.linkedin.com/in/';
 
+    const toggleDrawer = () => {
+        navigation.toggleDrawer();
+      };
+
     return (
     <View style={styles.container}>
-      
+        <View style={styles.logoContainer}>
+        <TouchableOpacity
+            onPress={() => toggleDrawer()}
+            style={styles.menuButton}
+          >
+            <SimpleLineIcons name="menu" size={24} color="white" />
+          </TouchableOpacity>
+
+        </View>
        <View style={styles.containerlogoTitulo}>
         <Image source={require('../../../assets/LOGO.png')} style={styles.imgLogo}/>
         <Text style={styles.titulo}>Nossa Equipe</Text>

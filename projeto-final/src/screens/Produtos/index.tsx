@@ -15,8 +15,10 @@ import Plus from "@expo/vector-icons/Fontisto";
 import { ProductContext } from "../../contexts/produtoContext";
 import { CardProduto } from "../../components/CardProduto";
 
-const Produtos = ({ navigation }: any) => {
-  const { products, getProducts, deleteProduct } = useContext(ProductContext);
+const Produtos = ({ navigation, route }: any) => {
+  const { products, getProducts, deleteProduct, categoria } = useContext(ProductContext);
+
+  const categoriaSelecionada = categoria
 
   const handleNovoProduto = () => {
     navigation.navigate("CadastroProduto");
@@ -35,13 +37,15 @@ const Produtos = ({ navigation }: any) => {
   const cadeiras = products.filter(product => product.categoria === 'Cadeira');
   const perifericos = products.filter(product => product.categoria === 'Perifericos');
 
+  const produtosFiltrados = categoriaSelecionada === 'Todos' ? products : products.filter(product => product.categoria === categoriaSelecionada);
+
   const toggleDrawer = () => {
     navigation.toggleDrawer();
   };
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [categoria]);
 
   const renderCategoria = (title: string, item: Produto[]) => {
     return (
@@ -59,10 +63,11 @@ const Produtos = ({ navigation }: any) => {
                 onPressEdit={() => handleEditProduct(item)}
               />
             )}
-            horizontal
-            ItemSeparatorComponent={() => <View style={{width: 20}}/>}
-            ListFooterComponent={() => <View style={{width: 20}}/>}
-            ListHeaderComponent={() => <View style={{width: 20}}/>}
+            horizontal={!categoria ? true : false}
+
+            ItemSeparatorComponent={() => <View style={{ width: 20, height: 20 }} />}
+            ListFooterComponent={() => <View style={{ width: 20 }} />}
+            ListHeaderComponent={() => <View style={{ width: 20 }} />}
           />
         </View>
       </View>
@@ -88,12 +93,15 @@ const Produtos = ({ navigation }: any) => {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        {pcs && renderCategoria('PC', pcs)}
-        {monitores && renderCategoria('Monitor', monitores)}
-        {perifericos && renderCategoria('Periféricos', perifericos)}
-        {cadeiras && renderCategoria('Cadeiras', cadeiras)}
-      </ScrollView>
+
+      {!categoriaSelecionada ?
+        <ScrollView contentContainerStyle={styles.scrollView}>
+            {pcs && renderCategoria('PC', pcs)}
+            {monitores && renderCategoria('Monitor', monitores)}
+            {perifericos && renderCategoria('Perifericos', perifericos)}
+            {cadeiras && renderCategoria('Cadeiras', cadeiras)}
+        </ScrollView>: renderCategoria(categoriaSelecionada, produtosFiltrados)
+      }
     </View>
   );
 };

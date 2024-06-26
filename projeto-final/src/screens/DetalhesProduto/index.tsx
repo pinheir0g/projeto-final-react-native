@@ -12,7 +12,7 @@ export default function DetalhesProduto({
 }: DetalhesProdutoProps) {
   const { deleteProduct } = useContext(ProductContext);
 
-  const handleEditProduct = async (product: Produto) => {
+  const handleEditProduct = (product: Produto) => {
     navigation.navigate("CadastroProduto", { produto: product });
   };
   const props = route.params.produto;

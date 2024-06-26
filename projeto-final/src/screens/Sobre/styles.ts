@@ -56,4 +56,17 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
 
   },
+  menuButton: {
+    justifyContent: 'flex-start',
+    left: 5,
+    top: 11,
+    backgroundColor: '#FF6E00',
+    padding: 5,
+    borderRadius: 10
+},
+logoContainer: {
+  flexDirection: 'row',
+  marginHorizontal: 10,
+  marginVertical: 10
+},
 });
