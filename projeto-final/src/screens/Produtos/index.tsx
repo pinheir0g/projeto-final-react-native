@@ -6,15 +6,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
-import { useContext, useEffect} from "react";
+import { useContext, useEffect } from "react";
 import { Produto } from "../../types";
 import React from "react";
 import { Logo } from "../../components/Logo";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
-import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome6 } from "@expo/vector-icons";
 import Plus from "@expo/vector-icons/Fontisto";
 import { ProductContext } from "../../contexts/produtoContext";
+import { CardProduto } from "../../components/CardProduto";
 
 const Produtos = ({ navigation }: any) => {
 
@@ -25,14 +24,19 @@ const Produtos = ({ navigation }: any) => {
     navigation.navigate("CadastroProduto");
   };
 
-  const handleDetalhesProduto = (item:Produto) => {
-    navigation.navigate("DetalhesProduto",{produto:item});
+  const handleDetalhesProduto = (item: Produto) => {
+    navigation.navigate("DetalhesProduto", { produto: item });
   };
 
   const handleEditProduct = async (product: Produto) => {
     navigation.navigate('CadastroProduto', { produto: product });
 
   }
+
+  const pcs = products.filter(product => product.categoria === 'PC');
+  const monitores = products.filter(product => product.categoria === 'Monitor');
+  const cadeiras = products.filter(product => product.categoria === 'Monitor');
+  const perifericos = products.filter(product => product.categoria === 'Monitor');
 
   const toggleDrawer = () => {
     navigation.toggleDrawer();
@@ -63,38 +67,47 @@ const Produtos = ({ navigation }: any) => {
         </View>
       </View>
       <View style={styles.productsContainer}>
+        <View style={styles.categoriaPc}>
+          <Text style={styles.categoria}>PC</Text>
+          <FlatList
+            data={pcs}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <CardProduto
+                produto={item}
+                onPress={() => handleDetalhesProduto(item)}
+                onPressDel={() => deleteProduct(item.id)}
+                onPressEdit={() => handleEditProduct(item)}
+              />
+            )}
+          />
+        </View>
+        <View style={styles.categoriaMonitor}>
+          <Text style={styles.categoria}>Monitor</Text>
+          <FlatList
+            data={monitores}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <CardProduto
+                produto={item}
+                onPress={() => handleDetalhesProduto(item)}
+                onPressDel={() => deleteProduct(item.id)}
+                onPressEdit={() => handleEditProduct(item)}
+              />
+            )}
+          />
+        </View>
         <Text style={styles.categoria}>PC</Text>
         <FlatList
           data={products}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.product}
+            <CardProduto
+              produto={item}
               onPress={() => handleDetalhesProduto(item)}
-            >
-              <View>
-                <Image
-                  source={{ uri: item.imagem }}
-                  style={styles.imagemProduto}
-                />
-              </View>
-              <View style={styles.productInfo}>
-                <Text style={styles.title}>{item.nome}</Text>
-                <Text style={styles.quantidade}>
-                  {item.quantidade} unidades
-                </Text>
-                <Text style={styles.title}>{item.preco}</Text>
-              </View>
-              <View style={styles.btn}>
-                <TouchableOpacity onPress={() => handleEditProduct(item)}>
-                  <FontAwesome6 name="edit" size={27} color="black" />
-
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => deleteProduct(item.id)}>
-                  <Ionicons name="trash-outline" size={28} color="black" />
-                </TouchableOpacity>
-              </View>
-            </TouchableOpacity>
+              onPressDel={() => deleteProduct(item.id)}
+              onPressEdit={() => handleEditProduct(item)}
+            />
           )}
         />
       </View>
