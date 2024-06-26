@@ -2,6 +2,7 @@ import React, { createContext,  useState } from "react";
 import { Produto, PropsChildren } from "../types";
 import { deleteProductById, getAllProducts, postProduct, updateProduct } from "../services/produtosCrud";
 import { Alert } from "react-native";
+import styles from "toastify-react-native/components/styles";
 
 
 type ProductContextType = {
@@ -52,7 +53,6 @@ export const ProductProvider = ({children}: PropsChildren) => {
         try {
           const deletedProduct = await deleteProductById(id)
           setProducts(products.filter(item => item.id !== deletedProduct.id))
-          Alert.alert('Sucesso', 'Produto deletado com sucesso!')
         } catch (err) {
           console.log(err)
         }

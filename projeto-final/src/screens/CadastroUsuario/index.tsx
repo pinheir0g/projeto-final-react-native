@@ -6,13 +6,13 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
-  TouchableOpacity,
   ActivityIndicator,
   ScrollView,
   KeyboardAvoidingView,
   Platform,
 
 } from "react-native";
+import ToastManager, { Toast } from 'toastify-react-native'
 import React, { useContext, useState } from "react";
 import { styles } from "./styles";
 import { Usuario } from "../../types";
@@ -49,7 +49,7 @@ export function CadastroUsuario({ navigation }: CadastroProdutoProps) {
       const savedUser = await saveUsuario(newUser);
       console.log(savedUser);
       navigation.navigate('Login');
-      Alert.alert('Sucesso', 'Usuario cadastrado com sucesso.')
+      Alert.alert("Parabéns", "Usuario cadastrado com sucesso.");
       setUsuario({
         id: "",
         nome: "",
@@ -58,6 +58,7 @@ export function CadastroUsuario({ navigation }: CadastroProdutoProps) {
       });
 
     } catch (err) {
+      Toast.error("Errooo","center")
       Alert.alert("Erro", "Não foi possivel.");
       console.log(err)
     };
@@ -74,9 +75,9 @@ export function CadastroUsuario({ navigation }: CadastroProdutoProps) {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} disabled={loading}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        //  behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-      <ScrollView contentContainerStyle={styles.Scrolada}>
+  
       <View style={styles.container}>
         <Image
           style={styles.logo}
@@ -102,11 +103,10 @@ export function CadastroUsuario({ navigation }: CadastroProdutoProps) {
             style={styles.input}
             onChangeText={(value) => handleChange("senha", value)}
           />
-          {/* Adicionar validação de confirmar senha */}
+        
           <Text style={styles.texto}>Confirmar senha</Text>
           <TextInput style={styles.input} />
         </View>
-      </View>
         <View style={styles.posicaoBotao}>
           <ButtonPadrão
             title={"Cadastrar"}
@@ -115,7 +115,8 @@ export function CadastroUsuario({ navigation }: CadastroProdutoProps) {
             }}
           />
         </View>
-    </ScrollView>
+      </View>
+    
     </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );

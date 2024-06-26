@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
         backgroundColor: '#0F0E0E',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 20
+        gap: 20,
+        
     },
 
     header:{
@@ -24,15 +25,18 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 30,
         marginVertical: 10,
         fontWeight: "condensedBold",
+        fontSize:25
     },
 
     passwordContainer: {
+        fontSize:25,
         flexDirection: 'row',
         alignItems: 'center',
         width: '80%',
     },
 
     inputPassword: {
+        fontSize:25,
         width: "100%",
         height: 70,
         backgroundColor: "white",

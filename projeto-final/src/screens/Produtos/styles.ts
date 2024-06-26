@@ -2,17 +2,24 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
+        marginTop:'10%',
         backgroundColor: '#0F0E0E',
-        height: '100%'
+        height: '100%',
+        
     },
     header: {
+        
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         height: 70,
         paddingHorizontal: 10,
     },
+    ok:{
+        marginLeft:20,
+    },
     menuButton: {
+        
         justifyContent: 'flex-start',
         left: 5,
         top: 11,
@@ -25,9 +32,10 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginRight: 10,
+  
     },
     categoria: {
+        
         color: 'white',
         fontSize: 24,
         paddingVertical: 5,
@@ -40,7 +48,7 @@ export const styles = StyleSheet.create({
     scrollView: {
         width: '100%',
         justifyContent: 'center',
-        paddingBottom: 30
+        paddingBottom: 30,
     },
     
     categoriaContainer: {

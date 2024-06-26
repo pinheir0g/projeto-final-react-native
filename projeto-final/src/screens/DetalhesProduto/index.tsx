@@ -5,6 +5,9 @@ import { ButtonPadrão } from "../../components/Button";
 import { DetalhesProdutoProps } from "../../routes/stack";
 import { ProductContext } from "../../contexts/produtoContext";
 import { Produto } from "../../types";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { FontAwesome6 } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function DetalhesProduto({
   route,
@@ -48,17 +51,22 @@ export default function DetalhesProduto({
       </View>
 
       <View style={styles.container6}>
-        <ButtonPadrão
-          title={"Deletar"}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => handleEditProduct(props)}
+        >
+          <FontAwesome6 name="edit" size={27} color="white" />
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
           onPress={() => {
             deleteProduct(props.id);
             navigation.navigate("Produtos");
           }}
-        />
-        <ButtonPadrão
-          title={"Editar"}
-          onPress={() => handleEditProduct(props)}
-        />
+        >
+          <Ionicons name="trash-outline" size={28} color="white" />
+        </TouchableOpacity>
       </View>
     </View>
   );

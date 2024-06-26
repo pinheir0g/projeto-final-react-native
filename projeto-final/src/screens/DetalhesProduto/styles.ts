@@ -60,6 +60,16 @@ export const styles = StyleSheet.create({
         height:'50%',
         width:'70%',
     },
+    button:{
+        backgroundColor: '#FF6E00',
+        padding: 10,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        borderRadius: 80,
+        top: 10,
+        paddingLeft: 40,
+        paddingRight: 40,
+    },
 
     titulo: {
         marginTop: 10,

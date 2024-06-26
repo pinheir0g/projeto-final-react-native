@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
+import { Toast } from "toastify-react-native";
 import { Produto } from "../../types";
 import { styles } from "./styles";
 import * as ImagePicker from "expo-image-picker";
@@ -44,6 +45,12 @@ const CadastroProduto = ({ navigation, route }: CadastroProdutoProps) => {
     precision: 2,
   });
 
+
+    const showToasts = () => {
+      Toast.info('Promised is resolved','center')
+    }
+
+
   const handleChange = (name: keyof Produto, value: string) => {
     setProduto({
       ...produto,
@@ -64,7 +71,7 @@ const CadastroProduto = ({ navigation, route }: CadastroProdutoProps) => {
     try {
       if (produto.id) {
         editProduct(newProduct);
-        Alert.alert('Sucesso', 'Produto editado com sucesso');
+        Alert.alert('Sucesso', 'Produto Editado com sucesso');
         navigation.navigate('Produtos')
       } else {
         saveProduct(newProduct);
@@ -98,7 +105,7 @@ const CadastroProduto = ({ navigation, route }: CadastroProdutoProps) => {
       await ImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      alert("Acesso negado!");
+      Alert.alert('Login Invalido', "Acesso negado!");
       return;
     }
 
@@ -177,14 +184,14 @@ const CadastroProduto = ({ navigation, route }: CadastroProdutoProps) => {
               )}
             </View>
           </View>
-        </View>
         <View style={styles.containerButton}>
           {produto.id ?
             <ButtonPadrão title={"Salvar"} onPress={saveProduto} /> : (
               <ButtonPadrão title={"Cadastrar Produto"} onPress={saveProduto} />
             )}
         </View>
-      </ScrollView>
+      </View>
+    </ScrollView>
     </TouchableWithoutFeedback>
   );
 };
